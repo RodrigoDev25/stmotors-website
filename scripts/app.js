@@ -1,4 +1,89 @@
 // ================================
+// LGPD - COOKIE CONSENT
+// ================================
+(function() {
+  const COOKIE_CONSENT_KEY = 'stmotors_cookie_consent';
+  const CONSENT_EXPIRY_DAYS = 365;
+
+  function getCookieConsent() {
+    try {
+      const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+      return consent ? JSON.parse(consent) : null;
+    } catch (e) {
+      console.error('Erro ao ler consentimento de cookies:', e);
+      return null;
+    }
+  }
+
+  function setCookieConsent(consent) {
+    try {
+      const consentData = {
+        analytics: consent.analytics || false,
+        marketing: consent.marketing || false,
+        timestamp: Date.now(),
+        expiry: Date.now() + (CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000)
+      };
+      localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+    } catch (e) {
+      console.error('Erro ao salvar consentimento de cookies:', e);
+    }
+  }
+
+  function isConsentExpired(consent) {
+    return !consent || !consent.expiry || Date.now() > consent.expiry;
+  }
+
+  function showCookieConsent() {
+    const banner = document.getElementById('cookie-consent');
+    if (banner) {
+      banner.hidden = false;
+    }
+  }
+
+  function hideCookieConsent() {
+    const banner = document.getElementById('cookie-consent');
+    if (banner) {
+      banner.hidden = true;
+    }
+  }
+
+  function initCookieConsent() {
+    const consent = getCookieConsent();
+
+    if (!consent || isConsentExpired(consent)) {
+      showCookieConsent();
+    }
+
+    const acceptAllBtn = document.getElementById('cookie-accept-all');
+    const acceptEssentialBtn = document.getElementById('cookie-accept-essential');
+
+    if (acceptAllBtn) {
+      acceptAllBtn.addEventListener('click', function() {
+        setCookieConsent({ analytics: true, marketing: true });
+        hideCookieConsent();
+        // Aqui você carregaria Google Analytics, Facebook Pixel, etc.
+        console.log('✅ Consentimento total concedido - Analytics e Marketing habilitados');
+      });
+    }
+
+    if (acceptEssentialBtn) {
+      acceptEssentialBtn.addEventListener('click', function() {
+        setCookieConsent({ analytics: false, marketing: false });
+        hideCookieConsent();
+        console.log('✅ Apenas cookies essenciais habilitados');
+      });
+    }
+  }
+
+  // Executar ao carregar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+  } else {
+    initCookieConsent();
+  }
+})();
+
+// ================================
 // MOBILE MENU TOGGLE
 // ================================
 const menuToggle = document.querySelector('.header__menu-toggle');
@@ -13,30 +98,30 @@ function toggleMenu() {
   mobileMenu.classList.toggle('active');
   overlay.classList.toggle('active');
   
-  // Prevenir scroll no body quando menu aberto
   body.style.overflow = isOpen ? '' : 'hidden';
   
-  // Atualizar ARIA para acessibilidade
   menuToggle.setAttribute('aria-expanded', !isOpen);
   menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu de navegação' : 'Fechar menu de navegação');
 }
 
-// Event Listeners
-menuToggle.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu);
+if (menuToggle) {
+  menuToggle.addEventListener('click', toggleMenu);
+}
 
-// Fechar menu ao clicar em link
+if (overlay) {
+  overlay.addEventListener('click', toggleMenu);
+}
+
 document.querySelectorAll('.nav__link-mobile').forEach(link => {
   link.addEventListener('click', () => {
-    if (mobileMenu.classList.contains('active')) {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
       toggleMenu();
     }
   });
 });
 
-// Fechar menu ao pressionar ESC
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+  if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
     toggleMenu();
   }
 });
@@ -99,7 +184,6 @@ function setActiveLink() {
   });
 }
 
-// Throttle para performance
 let scrollTicking = false;
 
 window.addEventListener('scroll', () => {
@@ -112,5 +196,343 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// Execução inicial
 setActiveLink();
+
+// ================================
+// HERO SEARCH - Autocomplete
+// ================================
+const searchInput = document.getElementById('search-input');
+const searchForm = document.querySelector('.hero__search');
+const suggestionsContainer = document.getElementById('search-suggestions');
+
+let debounceTimer;
+let currentFocus = -1;
+
+if (searchInput && suggestionsContainer) {
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    const query = e.target.value.trim();
+
+    if (query.length < 2) {
+      hideSuggestions();
+      return;
+    }
+
+    debounceTimer = setTimeout(() => {
+      fetchSuggestions(query);
+    }, 300);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (!suggestionsContainer || suggestionsContainer.hidden) return;
+
+    const items = suggestionsContainer.querySelectorAll('[role="option"]');
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      currentFocus++;
+      addActive(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentFocus--;
+      addActive(items);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (currentFocus > -1 && items[currentFocus]) {
+        items[currentFocus].click();
+      } else {
+        searchForm.submit();
+      }
+    } else if (e.key === 'Escape') {
+      hideSuggestions();
+      searchInput.blur();
+    }
+  });
+}
+
+function fetchSuggestions(query) {
+  try {
+    // Mock data - Em produção, fazer chamada real à API
+    const mockSuggestions = [
+      { id: 1, name: 'Honda CG 160 Start', category: 'Motos', year: 2023 },
+      { id: 2, name: 'Honda CB 500F', category: 'Motos', year: 2022 },
+      { id: 3, name: 'Yamaha Fazer 250', category: 'Motos', year: 2023 },
+      { id: 4, name: 'Yamaha MT-07', category: 'Motos', year: 2021 },
+      { id: 5, name: 'Suzuki GSX-S 750', category: 'Motos', year: 2022 }
+    ];
+
+    const filtered = mockSuggestions.filter(item => 
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (filtered.length > 0) {
+      renderSuggestions(filtered);
+    } else {
+      hideSuggestions();
+    }
+  } catch (error) {
+    console.error('Erro ao buscar sugestões:', error);
+    hideSuggestions();
+  }
+}
+
+function renderSuggestions(suggestions) {
+  if (!suggestionsContainer) return;
+
+  suggestionsContainer.innerHTML = '';
+  currentFocus = -1;
+
+  suggestions.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.classList.add('hero__search-suggestion-item');
+    div.setAttribute('role', 'option');
+    div.setAttribute('id', `suggestion-${index}`);
+    div.setAttribute('aria-selected', 'false');
+    div.setAttribute('tabindex', '0');
+    
+    div.innerHTML = `
+      <span class="suggestion-name">${escapeHtml(item.name)}</span>
+      ${item.year ? `<span class="suggestion-year">${escapeHtml(String(item.year))}</span>` : ''}
+    `;
+
+    div.addEventListener('click', () => {
+      searchInput.value = item.name;
+      hideSuggestions();
+      searchForm.submit();
+    });
+
+    div.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        div.click();
+      }
+    });
+
+    suggestionsContainer.appendChild(div);
+  });
+
+  suggestionsContainer.hidden = false;
+  searchInput.setAttribute('aria-expanded', 'true');
+}
+
+function hideSuggestions() {
+  if (!suggestionsContainer) return;
+  
+  suggestionsContainer.hidden = true;
+  suggestionsContainer.innerHTML = '';
+  searchInput.setAttribute('aria-expanded', 'false');
+  currentFocus = -1;
+}
+
+function addActive(items) {
+  if (!items || items.length === 0) return;
+  
+  removeActive(items);
+  
+  if (currentFocus >= items.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = items.length - 1;
+  
+  items[currentFocus].classList.add('active');
+  items[currentFocus].setAttribute('aria-selected', 'true');
+  searchInput.setAttribute('aria-activedescendant', items[currentFocus].id);
+  
+  items[currentFocus].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+function removeActive(items) {
+  items.forEach(item => {
+    item.classList.remove('active');
+    item.setAttribute('aria-selected', 'false');
+  });
+}
+
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+document.addEventListener('click', (e) => {
+  if (suggestionsContainer && searchForm && !searchForm.contains(e.target)) {
+    hideSuggestions();
+  }
+});
+
+// ================================
+// VIDEO BACKGROUND
+// ================================
+const heroVideo = document.querySelector('.hero__background-video');
+
+if (heroVideo) {
+  // Feature detection para IntersectionObserver
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          heroVideo.play().catch(err => {
+            console.log('Autoplay bloqueado pelo navegador:', err);
+          });
+        } else {
+          heroVideo.pause();
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    videoObserver.observe(heroVideo);
+  } else {
+    // Fallback: tentar reproduzir direto
+    heroVideo.play().catch(err => {
+      console.log('Autoplay bloqueado:', err);
+    });
+  }
+
+  // Network-aware loading
+  if ('connection' in navigator) {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection) {
+      const effectiveType = connection.effectiveType;
+      if (effectiveType === 'slow-2g' || effectiveType === '2g') {
+        heroVideo.remove();
+        console.log('📱 Vídeo removido: conexão lenta detectada');
+      }
+    }
+  }
+
+  // Save data mode
+  if ('connection' in navigator && navigator.connection.saveData) {
+    heroVideo.remove();
+    console.log('📱 Vídeo removido: modo economia de dados ativo');
+  }
+}
+
+// ================================
+// SMOOTH SCROLL
+// ================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href');
+    
+    if (targetId === '#' || targetId === '') return;
+    
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      e.preventDefault();
+      
+      const headerOffset = parseInt(getComputedStyle(document.documentElement)
+        .getPropertyValue('--header-height')) || 72;
+      
+      const elementPosition = targetElement.offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Melhorar acessibilidade: focar no elemento após scroll
+      setTimeout(() => {
+        targetElement.focus({ preventScroll: true });
+      }, 500);
+    }
+  });
+});
+
+// ================================
+// PERFORMANCE - IMAGE LAZY LOADING
+// ================================
+if ('loading' in HTMLImageElement.prototype) {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+  images.forEach(img => {
+    img.src = img.dataset.src || img.src;
+  });
+} else {
+  // Fallback para navegadores antigos
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+  document.body.appendChild(script);
+}
+
+// ================================
+// CLEANUP
+// ================================
+window.addEventListener('beforeunload', () => {
+  clearTimeout(debounceTimer);
+});
+
+// ================================
+// ERROR HANDLING GLOBAL
+// ================================
+window.addEventListener('error', (e) => {
+  console.error('Erro global capturado:', e.error);
+  // Em produção, enviar para serviço de monitoramento
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Promise rejeitada não tratada:', e.reason);
+  // Em produção, enviar para serviço de monitoramento
+});
+
+// ================================
+// INIT
+// ================================
+function init() {
+  console.log('🏍️ ST Motors - Sistema inicializado');
+  console.log('📊 Performance:', {
+    DOMContentLoaded: performance.now().toFixed(2) + 'ms'
+  });
+  
+  setActiveLink();
+  updateHeader();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// ================================
+// WEB VITALS - MONITORING (Opcional)
+// ================================
+if ('PerformanceObserver' in window) {
+  try {
+    // Largest Contentful Paint
+    const lcpObserver = new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      console.log('⚡ LCP:', lastEntry.renderTime || lastEntry.loadTime);
+    });
+    lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+
+    // First Input Delay
+    const fidObserver = new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      entries.forEach((entry) => {
+        console.log('⚡ FID:', entry.processingStart - entry.startTime);
+      });
+    });
+    fidObserver.observe({ type: 'first-input', buffered: true });
+
+    // Cumulative Layout Shift
+    let clsScore = 0;
+    const clsObserver = new PerformanceObserver((list) => {
+      list.getEntries().forEach((entry) => {
+        if (!entry.hadRecentInput) {
+          clsScore += entry.value;
+          console.log('⚡ CLS:', clsScore);
+        }
+      });
+    });
+    clsObserver.observe({ type: 'layout-shift', buffered: true });
+  } catch (e) {
+    console.log('Web Vitals monitoring não disponível:', e);
+  }
+}

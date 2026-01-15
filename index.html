@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <title>ST Motors Araraquara | Motos Usadas e Seminovas</title>
+  <title>ST Motors Araraquara | Motos Usadas e Seminovas com Procedência Garantida</title>
   <meta name="description"
-    content="Encontre a moto ideal em Araraquara. Motos usadas e seminovas com procedência garantida, financiamento facilitado e atendimento personalizado.">
+    content="Encontre a moto ideal em Araraquara. Motos usadas e seminovas com procedência garantida, financiamento facilitado e atendimento personalizado. Confira nosso estoque!">
   <meta name="author" content="ST Motors">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#6EAF49">
   <link rel="canonical" href="https://stmotorsara.com.br">
 
   <!-- Open Graph -->
@@ -20,17 +21,35 @@
     content="Encontre a moto ideal em Araraquara. Procedência garantida e atendimento personalizado.">
   <meta property="og:url" content="https://stmotorsara.com.br">
   <meta property="og:image" content="https://stmotorsara.com.br/assets/st-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ST Motors Araraquara">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ST Motors Araraquara | Motos Usadas e Seminovas">
+  <meta name="twitter:description" content="Encontre a moto ideal em Araraquara. Procedência garantida.">
+  <meta name="twitter:image" content="https://stmotorsara.com.br/assets/st-og.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <!-- Preconnect para Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="styles/index-styles.css" as="style">
+  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+
+  <!-- DNS Prefetch para recursos externos futuros -->
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,60 +57,141 @@
   <!-- CSS -->
   <link rel="stylesheet" href="styles/index-styles.css">
 
-  <!-- Schema.org - Local Business -->
+  <!-- Schema.org - Local Business (Expandido) -->
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MotorcycleDealer",
+  "name": "ST Motors",
+  "description": "Loja especializada em motos usadas, seminovas e novas em Araraquara-SP. Procedência garantida, financiamento facilitado e atendimento personalizado.",
+  "image": [
+    "https://stmotorsara.com.br/assets/st-og.jpg",
+    "https://stmotorsara.com.br/assets/logo-header.svg"
+  ],
+  "url": "https://stmotorsara.com.br",
+  "telephone": "+551630147386",
+  "priceRange": "R$ 5.000 - R$ 50.000",
+  "paymentAccepted": "Dinheiro, Cartão de Crédito, Cartão de Débito, Financiamento",
+  "currenciesAccepted": "BRL",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+5516997305602",
+    "contactType": "sales",
+    "areaServed": "BR",
+    "availableLanguage": ["Portuguese"],
+    "contactOption": "TollFree"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R. Maurício Galli, 47",
+    "addressLocality": "Araraquara",
+    "addressRegion": "SP",
+    "postalCode": "14806-155",
+    "addressCountry": "BR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -21.767900187638183,
+    "longitude": -48.164309978264384
+  },
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "AutomotiveBusiness",
-      "name": "ST Motors",
-      "description": "Loja de motos usadas, seminovas e novas em Araraquara-SP",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "R. Maurício Galli, 47",
-        "addressLocality": "Araraquara",
-        "addressRegion": "SP",
-        "postalCode": "14806-155",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -21.767900187638183,
-        "longitude": -48.164309978264384
-      },
-      "url": "https://stmotorsara.com.br",
-      "telephone": "+551630147386",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "08:30",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "08:30",
-          "closes": "13:00"
-        }
-      ]
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:30",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:30",
+      "closes": "13:00"
     }
-    </script>
+  ],
+  "sameAs": [
+    "https://www.instagram.com/stmotorsara",
+    "https://www.facebook.com/stmotorsara"
+  ]
+}
+</script>
+
+  <!-- Schema.org - WebSite with SearchAction -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ST Motors Araraquara",
+  "url": "https://stmotorsara.com.br",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://stmotorsara.com.br/estoque?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  <!-- Schema.org - BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stmotorsara.com.br"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
-   <!-- Skip Link para Acessibilidade -->
+  <!-- Skip Link para Acessibilidade -->
   <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- LGPD Cookie Consent Banner -->
+  <aside id="cookie-consent" class="cookie-consent" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" hidden>
+    <div class="cookie-consent__container">
+      <div class="cookie-consent__content">
+        <h2 id="cookie-consent-title" class="cookie-consent__title">🍪 Privacidade e Cookies</h2>
+        <p id="cookie-consent-description" class="cookie-consent__description">
+          Utilizamos cookies essenciais para o funcionamento do site. Cookies de análise e marketing só serão ativados com seu consentimento. 
+          <a href="politica-privacidade.html" class="cookie-consent__link">Política de Privacidade</a>
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button type="button" id="cookie-accept-all" class="cookie-consent__button cookie-consent__button--primary">
+          Aceitar Todos
+        </button>
+        <button type="button" id="cookie-accept-essential" class="cookie-consent__button cookie-consent__button--secondary">
+          Apenas Essenciais
+        </button>
+      </div>
+    </div>
+  </aside>
 
   <!-- ================================
        HEADER
        ================================ -->
   <header class="header" role="banner">
     <div class="header__container">
-      
+
       <!-- Logo -->
       <div class="header__logo">
-        <a href="/" class="header__logo-link" aria-label="ST Motors - Página Inicial">
-          <img src="assets/logo-header.svg" alt="ST Motors" class="header__logo-img" width="150" height="52">
+        <a href="index.html" class="header__logo-link" aria-label="ST Motors - Página Inicial">
+          <img src="assets/logo-header.svg" alt="ST Motors - Motos Usadas, Seminovas e Novas" class="header__logo-img"
+            width="150" height="52">
         </a>
       </div>
 
@@ -108,7 +208,8 @@
       </nav>
 
       <!-- Mobile Menu Toggle -->
-      <button class="header__menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="header__menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false"
+        aria-controls="mobile-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -128,22 +229,179 @@
     </nav>
 
     <!-- Overlay para fechar menu mobile -->
-    <div class="header__overlay"></div>
+    <div class="header__overlay" aria-hidden="true"></div>
   </header>
 
   <!-- ================================
        MAIN CONTENT
        ================================ -->
   <main id="main-content">
-    <!-- Demo Hero Section -->
-    <section class="demo-hero">
-      <div class="demo-hero__content">
-        <h1 class="demo-hero__title">Hero Section<br>com campo de busca virá aqui</h1>
+
+    <!-- ================================
+         HERO SECTION
+         ================================ -->
+    <section id="home" class="hero" role="region" aria-label="Busca de motos">
+
+      <!-- Background -->
+      <div class="hero__background">
+        <picture class="hero__background-image">
+         <!-- <source srcset="assets/hero-bg.webp" type="image/webp"> -->
+          <source srcset="assets/hero-bg.jpg" type="image/jpeg">
+          <img src="assets/hero-bg.jpg" alt="" loading="eager" width="1920" height="1080">
+        </picture>
+
+        <div class="hero__overlay" aria-hidden="true"></div>
+      </div>
+
+      <!-- Badge de Localização (Glass Effect) -->
+      <a href="https://www.google.com/maps/place/R.+Maur%C3%ADcio+Galli,+47+-+Jardim+Pinheiros,+Araraquara+-+SP,+14806-155"
+        target="_blank" rel="noopener noreferrer" class="hero__location-badge"
+        aria-label="Ver localização da ST Motors no Google Maps">
+        <svg class="hero__location-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div class="hero__location-text">
+          <span class="hero__location-city">Araraquara-SP</span>
+          <span class="hero__location-cta">Pesquisando motos?<br>Venha nos visitar</span>
+        </div>
+      </a>
+
+      <!-- Campo de Busca com Eyebrow -->
+      <div class="hero__content">
+        <!-- Eyebrow -->
+        <span class="hero__eyebrow">Comece Sua Jornada</span>
+
+        <form class="hero__search" role="search" aria-label="Formulário de busca de motos no estoque" method="GET" action="estoque.html">
+
+          <div class="hero__search-wrapper">
+
+            <label for="search-input" class="visually-hidden">
+              Pesquisar motos por modelo, marca ou ano
+            </label>
+
+            <input type="search" id="search-input" name="q" class="hero__search-input"
+              placeholder="Pesquisar por modelo, marca ou ano" aria-label="Campo de busca de motos por modelo, marca ou ano"
+              aria-autocomplete="list" aria-controls="search-suggestions" aria-expanded="false"
+              autocomplete="off" spellcheck="false" required>
+
+            <button type="submit" class="hero__search-button" aria-label="Executar busca de motos">
+              <svg class="hero__search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              <span class="visually-hidden">Buscar</span>
+            </button>
+          </div>
+
+          <div class="hero__search-suggestions" id="search-suggestions" role="listbox" aria-label="Sugestões de busca"
+            hidden>
+            <!-- Sugestões dinâmicas via JavaScript -->
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- ================================
+         VALUE SECTION (Dark Theme)
+         H1 SEO + Trust Signals
+         ================================ -->
+    <section class="value-section" role="region" aria-labelledby="value-heading">
+      <div class="value-section__container">
+
+        <!-- H1 - Título Principal SEO Otimizado -->
+        <h1 id="value-heading" class="value-section__title">
+          Motos Usadas e Seminovas com Garantia de Procedência em Araraquara
+        </h1>
+
+        <!-- H2 - Subtítulo Semântico -->
+        <h2 class="value-section__subtitle">
+          Confiança, Transparência e Segurança em Cada Negociação
+        </h2>
+
+        <!-- Trust Cards - 3 Pilares (Design Premium) -->
+        <div class="trust-grid">
+
+          <!-- Card 1: Negociação Segura -->
+          <article class="trust-card">
+            <div class="trust-card__icon-wrapper">
+              <div class="trust-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+            </div>
+            <div class="trust-card__content">
+              <h3 class="trust-card__title">Negociação Segura</h3>
+              <p class="trust-card__description">Documentação verificada e procedência garantida em todas as motos</p>
+            </div>
+          </article>
+
+          <!-- Card 2: Atendimento Exclusivo -->
+          <article class="trust-card">
+            <div class="trust-card__icon-wrapper">
+              <div class="trust-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+            </div>
+            <div class="trust-card__content">
+              <h3 class="trust-card__title">Atendimento Exclusivo</h3>
+              <p class="trust-card__description">Consultoria personalizada para encontrar a moto ideal para você</p>
+            </div>
+          </article>
+
+          <!-- Card 3: Garantia -->
+          <article class="trust-card">
+            <div class="trust-card__icon-wrapper">
+              <div class="trust-card__icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+            </div>
+            <div class="trust-card__content">
+              <h3 class="trust-card__title">Garantia e Suporte</h3>
+              <p class="trust-card__description">Tranquilidade com garantia estendida e suporte pós-compra completo</p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CTA Section -->
+        <div class="value-section__cta">
+          <a href="#estoque" class="value-section__button value-section__button--primary">
+            Ver Estoque Completo
+          </a>
+          <a href="https://wa.me/5516997305602?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20as%20motos." 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="value-section__button value-section__button--secondary">
+            Falar com Especialista
+          </a>
+        </div>
+
       </div>
     </section>
+
   </main>
 
-  <script src="scripts/app.js"></script>
+  <!-- JavaScript -->
+  <script src="scripts/app.js" defer></script>
 </body>
 
 </html>
