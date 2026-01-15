@@ -356,7 +356,7 @@
         </div>
         <div class="trust-card__content">
           <h3 class="trust-card__title">Negociação Segura</h3>
-          <p class="trust-card__description">Compre com tranquilidade: verificamos procedência e documentação para você não cair em golpes</p>
+          <p class="trust-card__description">Documentação verificada em cada moto para você comprar com tranquilidade e evitar golpes</p>
         </div>
       </article>
 
@@ -378,6 +378,325 @@
       </article>
 
     </div>
+
+  </div>
+</section>
+
+<!-- ================================
+     SHOWROOM SECTION
+     ================================ -->
+<section id="estoque" class="showroom" role="region" aria-labelledby="showroom-heading">
+  <div class="showroom__container">
+    
+    <!-- Header -->
+    <header class="showroom__header">
+      <h2 id="showroom-heading" class="showroom__title">Nosso Estoque</h2>
+      <p class="showroom__subtitle">Motos selecionadas, revisadas e prontas para você</p>
+    </header>
+
+    <!-- Filtros -->
+    <div class="showroom__filters" role="search" aria-label="Filtros de busca">
+      <button type="button" class="showroom__filter-toggle" aria-expanded="false" aria-controls="filter-panel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        </svg>
+        Filtrar
+      </button>
+
+      <aside id="filter-panel" class="showroom__filter-panel" hidden>
+        <div class="filter-group">
+          <label for="filter-category" class="filter-label">Categoria</label>
+          <select id="filter-category" class="filter-select">
+            <option value="">Todas</option>
+            <option value="naked">Naked</option>
+            <option value="trail">Trail</option>
+            <option value="sport">Sport</option>
+            <option value="custom">Custom</option>
+            <option value="urbana">Urbana</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-price" class="filter-label">Faixa de Preço</label>
+          <select id="filter-price" class="filter-select">
+            <option value="">Todas</option>
+            <option value="0-10000">Até R$ 10.000</option>
+            <option value="10000-20000">R$ 10.000 - R$ 20.000</option>
+            <option value="20000-30000">R$ 20.000 - R$ 30.000</option>
+            <option value="30000+">Acima de R$ 30.000</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-engine" class="filter-label">Cilindrada</label>
+          <select id="filter-engine" class="filter-select">
+            <option value="">Todas</option>
+            <option value="0-250">Até 250cc</option>
+            <option value="250-500">250cc - 500cc</option>
+            <option value="500-750">500cc - 750cc</option>
+            <option value="750+">Acima de 750cc</option>
+          </select>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Grid de Motos -->
+    <div class="showroom__grid">
+      
+      <!-- Card 1: Honda CB 500F -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/cb-500f.jpg" alt="Honda CB 500F 2022" class="bike-card__image" loading="lazy" width="400" height="300">
+          <span class="bike-card__badge">Destaque</span>
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">CB 500F</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              471cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Naked
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2022
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 28.900</span>
+            </p>
+            <a href="moto-detalhes.html?id=cb-500f" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Yamaha MT-07 -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/mt-07.jpg" alt="Yamaha MT-07 2021" class="bike-card__image" loading="lazy" width="400" height="300">
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">MT-07</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              689cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Naked
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2021
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 35.500</span>
+            </p>
+            <a href="moto-detalhes.html?id=mt-07" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Honda CG 160 -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/cg-160.jpg" alt="Honda CG 160 Start 2023" class="bike-card__image" loading="lazy" width="400" height="300">
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">CG 160 Start</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              162cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Street
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2023
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 13.200</span>
+            </p>
+            <a href="moto-detalhes.html?id=cg-160" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Yamaha Fazer 250 -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/fazer-250.jpg" alt="Yamaha Fazer 250 2022" class="bike-card__image" loading="lazy" width="400" height="300">
+          <span class="bike-card__badge bike-card__badge--new">Novidade</span>
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">Fazer 250</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              249cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Mista
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2022
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 18.700</span>
+            </p>
+            <a href="moto-detalhes.html?id=fazer-250" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Suzuki GSX-S 750 -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/gsx-s-750.jpg" alt="Suzuki GSX-S 750 2021" class="bike-card__image" loading="lazy" width="400" height="300">
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">GSX-S 750</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              749cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Sport
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2021
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 42.500</span>
+            </p>
+            <a href="moto-detalhes.html?id=gsx-s-750" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: BMW G 310 GS -->
+      <article class="bike-card">
+        <div class="bike-card__image-wrapper">
+          <img src="assets/motos/g-310-gs.jpg" alt="BMW G 310 GS 2022" class="bike-card__image" loading="lazy" width="400" height="300">
+        </div>
+        <div class="bike-card__content">
+          <h3 class="bike-card__name">G 310 GS</h3>
+          <div class="bike-card__specs">
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+              313cc
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              Trail
+            </span>
+            <span class="bike-card__spec">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              2022
+            </span>
+          </div>
+          <div class="bike-card__footer">
+            <p class="bike-card__price">
+              <span class="bike-card__price-label">A partir de</span>
+              <span class="bike-card__price-value">R$ 25.900</span>
+            </p>
+            <a href="moto-detalhes.html?id=g-310-gs" class="bike-card__cta">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- CTA Footer -->
+    <footer class="showroom__footer">
+      <a href="estoque.html" class="showroom__cta-button">
+        Ver todo o estoque
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </footer>
 
   </div>
 </section>

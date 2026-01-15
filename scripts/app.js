@@ -536,3 +536,52 @@ if ('PerformanceObserver' in window) {
     console.log('Web Vitals monitoring não disponível:', e);
   }
 }
+// ================================
+// SHOWROOM FILTER TOGGLE (Mobile)
+// ================================
+const filterToggle = document.querySelector('.showroom__filter-toggle');
+const filterPanel = document.getElementById('filter-panel');
+
+if (filterToggle && filterPanel) {
+  filterToggle.addEventListener('click', () => {
+    const isExpanded = filterToggle.getAttribute('aria-expanded') === 'true';
+    
+    filterToggle.setAttribute('aria-expanded', !isExpanded);
+    filterPanel.hidden = isExpanded;
+  });
+}
+
+// ================================
+// SHOWROOM FILTERS
+// ================================
+const filterCategory = document.getElementById('filter-category');
+const filterPrice = document.getElementById('filter-price');
+const filterEngine = document.getElementById('filter-engine');
+
+function applyFilters() {
+  const categoryValue = filterCategory ? filterCategory.value : '';
+  const priceValue = filterPrice ? filterPrice.value : '';
+  const engineValue = filterEngine ? filterEngine.value : '';
+
+  // Em produção, fazer chamada à API com os filtros
+  console.log('🔍 Filtros aplicados:', {
+    category: categoryValue,
+    price: priceValue,
+    engine: engineValue
+  });
+
+  // Aqui você implementaria a lógica de filtragem
+  // Por exemplo, ocultar/mostrar cards baseado nos filtros
+}
+
+if (filterCategory) {
+  filterCategory.addEventListener('change', applyFilters);
+}
+
+if (filterPrice) {
+  filterPrice.addEventListener('change', applyFilters);
+}
+
+if (filterEngine) {
+  filterEngine.addEventListener('change', applyFilters);
+}
