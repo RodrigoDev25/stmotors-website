@@ -1149,7 +1149,8 @@ body {
   transition: all var(--transition-speed) var(--transition-ease);
   display: flex;
   flex-direction: row;
-  min-height: 140px;
+  min-height: 190px;
+  max-height: 190px;
 }
 
 .bike-card:hover {
