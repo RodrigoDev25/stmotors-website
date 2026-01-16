@@ -1170,11 +1170,13 @@ body {
 /* Imagem à esquerda - 40% da largura */
 .bike-card__image-wrapper {
   position: relative;
-  width: 40%;
+  width: 50%;
   min-width: 140px;
   background: var(--color-bg-secondary);
   overflow: hidden;
   flex-shrink: 0;
+  margin: 5px 0 5px 5px;
+  border-radius: 10px;
 }
 
 .bike-card__image {
