@@ -736,7 +736,7 @@
     </section>
 
     <!-- ================================
-     TESTIMONIALS SECTION (Social Proof)
+     TESTIMONIALS SECTION (Social Proof Slider)
      ================================ -->
     <section class="testimonials" aria-labelledby="testimonials-title">
       <div class="testimonials__container">
@@ -747,93 +747,130 @@
           <p class="testimonials__subtitle">Avaliações reais de quem já comprou com a ST Motors</p>
         </header>
 
-        <!-- Cards Grid -->
-        <div class="testimonials__grid">
+        <!-- Slider Wrapper -->
+        <div class="testimonials__slider-wrapper">
 
-          <!-- Card 1 -->
-          <article class="testimonial-card">
-            <div class="testimonial-card__image-wrapper">
-              <img src="assets/avaliacoes/avaliacao-google-1.jpg"
-                alt="Avaliação 5 estrelas no Google - Cliente satisfeito com atendimento e qualidade da moto"
-                class="testimonial-card__image" loading="lazy" width="600" height="400">
-            </div>
-            <div class="testimonial-card__content">
-              <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
+          <!-- Slider Container -->
+          <div class="testimonials__slider" id="testimonials-slider" role="region"
+            aria-label="Carrossel de depoimentos">
+
+            <!-- Card 1 -->
+            <article class="testimonial-card">
+              <div class="testimonial-card__image-wrapper">
+                <img src="assets/avaliacoes/avaliacao-google-1.jpg"
+                  alt="Avaliação 5 estrelas no Google - Cliente satisfeito com atendimento e qualidade da moto"
+                  class="testimonial-card__image" loading="lazy" width="600" height="400">
               </div>
-              <blockquote class="testimonial-card__text">
-                <p>Excelente atendimento! Comprei minha CG 160 e o pessoal foi muito atencioso desde o primeiro contato.
-                  A moto estava impecável, procedência garantida e o financiamento saiu super rápido. Recomendo demais!
-                </p>
-              </blockquote>
-              <footer class="testimonial-card__author">
-                <span class="testimonial-card__author-name">João Silva</span>
-                <span class="testimonial-card__source">Google Reviews</span>
-              </footer>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="testimonial-card">
-            <div class="testimonial-card__image-wrapper">
-              <img src="assets/avaliacoes/avaliacao-google-2.jpg"
-                alt="Avaliação 5 estrelas no Google - Cliente elogia procedência e transparência da loja"
-                class="testimonial-card__image" loading="lazy" width="600" height="400">
-            </div>
-            <div class="testimonial-card__content">
-              <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
+              <div class="testimonial-card__content">
+                <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
+                <blockquote class="testimonial-card__text">
+                  <p>Excelente atendimento! Comprei minha CG 160 e o pessoal foi muito atencioso desde o primeiro
+                    contato. A moto estava impecável, procedência garantida e o financiamento saiu super rápido.
+                    Recomendo demais!</p>
+                </blockquote>
+                <footer class="testimonial-card__author">
+                  <span class="testimonial-card__author-name">João Silva</span>
+                  <span class="testimonial-card__source">Google Reviews</span>
+                </footer>
               </div>
-              <blockquote class="testimonial-card__text">
-                <p>Melhor experiência que já tive comprando moto usada. Tudo muito transparente, sem enrolação. Comprei
-                  uma Fazer 250 seminova que parecia zero km. Preço justo e equipe super profissional. Voltarei com
-                  certeza!</p>
-              </blockquote>
-              <footer class="testimonial-card__author">
-                <span class="testimonial-card__author-name">Maria Santos</span>
-                <span class="testimonial-card__source">Google Reviews</span>
-              </footer>
-            </div>
-          </article>
+            </article>
 
+            <!-- Card 2 -->
+            <article class="testimonial-card">
+              <div class="testimonial-card__image-wrapper">
+                <img src="assets/avaliacoes/avaliacao-google-2.jpg"
+                  alt="Avaliação 5 estrelas no Google - Cliente elogia procedência e transparência da loja"
+                  class="testimonial-card__image" loading="lazy" width="600" height="400">
+              </div>
+              <div class="testimonial-card__content">
+                <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
+                <blockquote class="testimonial-card__text">
+                  <p>Melhor experiência que já tive comprando moto usada. Tudo muito transparente, sem enrolação.
+                    Comprei uma Fazer 250 seminova que parecia zero km. Preço justo e equipe super profissional.
+                    Voltarei com certeza!</p>
+                </blockquote>
+                <footer class="testimonial-card__author">
+                  <span class="testimonial-card__author-name">Maria Santos</span>
+                  <span class="testimonial-card__source">Google Reviews</span>
+                </footer>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button type="button" class="testimonials__nav testimonials__nav--prev" id="testimonials-prev"
+            aria-label="Ver depoimento anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <button type="button" class="testimonials__nav testimonials__nav--next" id="testimonials-next"
+            aria-label="Ver próximo depoimento">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+
+        </div>
+
+        <!-- Dots Indicator -->
+        <div class="testimonials__dots" id="testimonials-dots" role="tablist" aria-label="Navegação de depoimentos">
         </div>
 
       </div>
