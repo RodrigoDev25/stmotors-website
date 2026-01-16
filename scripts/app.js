@@ -585,3 +585,171 @@ if (filterPrice) {
 if (filterEngine) {
   filterEngine.addEventListener('change', applyFilters);
 }
+// ================================
+// TESTIMONIALS SLIDER
+// ================================
+(function() {
+  const slider = document.getElementById('testimonials-slider');
+  const prevBtn = document.getElementById('testimonials-prev');
+  const nextBtn = document.getElementById('testimonials-next');
+  const dotsContainer = document.getElementById('testimonials-dots');
+  
+  if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  const cards = slider.querySelectorAll('.testimonial-card');
+  let currentIndex = 0;
+  let cardsPerView = getCardsPerView();
+
+  // Detectar número de cards visíveis por viewport
+  function getCardsPerView() {
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  }
+
+  // Criar dots de navegação
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    const totalDots = Math.ceil(cards.length / cardsPerView);
+    
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('testimonial-dot');
+      dot.setAttribute('type', 'button');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', `Ir para depoimento ${i + 1}`);
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      
+      if (i === 0) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // Ir para slide específico
+  function goToSlide(index) {
+    const totalSlides = Math.ceil(cards.length / cardsPerView);
+    currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+    updateSlider();
+  }
+
+  // Atualizar posição do slider
+  function updateSlider() {
+    const cardWidth = cards[0].offsetWidth;
+    const gap = parseInt(getComputedStyle(slider).gap) || 16;
+    const offset = currentIndex * (cardWidth + gap) * cardsPerView;
+    
+    slider.style.transform = `translateX(-${offset}px)`;
+    
+    // Atualizar dots
+    const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+      dot.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+    });
+    
+    // Atualizar estado dos botões
+    const totalSlides = Math.ceil(cards.length / cardsPerView);
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= totalSlides - 1;
+  }
+
+  // Navegação anterior
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  }
+
+  // Navegação próxima
+  function nextSlide() {
+    const totalSlides = Math.ceil(cards.length / cardsPerView);
+    if (currentIndex < totalSlides - 1) {
+      currentIndex++;
+      updateSlider();
+    }
+  }
+
+  // Event Listeners
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Touch/Swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  }
+
+  // Keyboard navigation
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+      e.preventDefault();
+    }
+  });
+
+  // Resize handler
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newCardsPerView = getCardsPerView();
+      if (newCardsPerView !== cardsPerView) {
+        cardsPerView = newCardsPerView;
+        currentIndex = 0;
+        createDots();
+        updateSlider();
+      }
+    }, 150);
+  });
+
+  // Inicializar
+  createDots();
+  updateSlider();
+
+  // Auto-play opcional (comentado, pode ser ativado)
+  let autoplayInterval;
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      const totalSlides = Math.ceil(cards.length / cardsPerView);
+      if (currentIndex >= totalSlides - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      updateSlider();
+    }, 5000);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  startAutoplay();
+  slider.addEventListener('mouseenter', stopAutoplay);
+  slider.addEventListener('mouseleave', startAutoplay);
+})();
