@@ -1142,14 +1142,14 @@ body {
 
 /* Bike Card - MOBILE: Layout Horizontal */
 .bike-card {
-  background: var(--color-bg-secondary);
-  border-radius: 14px;
+  background: var(--color-bg-primary);
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all var(--transition-speed) var(--transition-ease);
   display: flex;
   flex-direction: row;
-  min-height: 230px;
+  min-height: 160px;
 }
 
 .bike-card:hover {
@@ -1169,9 +1169,9 @@ body {
 
 /* Imagem à esquerda - 40% da largura */
 .bike-card__image-wrapper {
-  width: 50%;
-  min-width: 160px;
-  padding: var(--spacing-xs);
+  position: relative;
+  width: 40%;
+  min-width: 140px;
   background: var(--color-bg-secondary);
   overflow: hidden;
   flex-shrink: 0;
@@ -1182,7 +1182,11 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 8px;
+  transition: transform 0.5s var(--transition-ease);
+}
+
+.bike-card:hover .bike-card__image {
+  transform: scale(1.08);
 }
 
 .bike-card__badge {
@@ -1190,7 +1194,7 @@ body {
   top: var(--spacing-xs);
   right: var(--spacing-xs);
   padding: 4px var(--spacing-xs);
-  background: var(--color-bg-secondary);
+  background: var(--color-primary);
   color: #FFFFFF;
   font-size: 0.6875rem;
   font-weight: var(--font-weight-semibold);
@@ -1208,27 +1212,23 @@ body {
   padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-xs);
   flex: 1;
   justify-content: space-between;
 }
 
-.bike-card__brand{
-  color: red;
-}
-
 .bike-card__name {
-  font-size: 1.4;
-  font-weight: 800;
-  color: #000000;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   margin: 0;
   line-height: 1.2;
-  font-family: 'Archivo', sans-serif;
 }
 
 .bike-card__specs {
   display: flex;
-  flex-direction: column;
-  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .bike-card__spec {
@@ -1238,9 +1238,9 @@ body {
   padding: 3px var(--spacing-xs);
   background: var(--color-bg-secondary);
   border-radius: 6px;
-  font-size: 0.9rem;
-  color: var(--color-border-dark);
-  font-weight: var(--color-border-dark);
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
 }
 
 .bike-card__spec svg {
@@ -1270,11 +1270,10 @@ body {
 }
 
 .bike-card__price-value {
-  font-size: clamp(1.5rem, 2.5vw, 1.375rem);
-  font-weight:800;
-  color: #000000;
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
   line-height: 1;
-  font-family: 'Archivo', sans-serif;;
 }
 
 /* ================================
@@ -1916,7 +1915,6 @@ body {
   .showroom__grid {
     gap: var(--spacing-2xl);
   }
-
 
   /* Testimonials - Large Desktop */
   .testimonials {
