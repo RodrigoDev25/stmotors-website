@@ -1149,8 +1149,7 @@ body {
   transition: all var(--transition-speed) var(--transition-ease);
   display: flex;
   flex-direction: row;
-  min-height: 190px;
-  max-height: 190px;
+  min-height: 200px;
 }
 
 .bike-card:hover {
@@ -1171,12 +1170,12 @@ body {
 /* Imagem à esquerda - 50% da largura */
 .bike-card__image-wrapper {
   position: relative;
-  width: 50%;
+  width: 60%;
   min-width: 140px;
   background: var(--color-bg-secondary);
   overflow: hidden;
   flex-shrink: 0;
-  margin: 5px 0 5px 5px;
+  margin: 5px;
   border-radius: 10px;
 }
 
