@@ -40,7 +40,7 @@
   /* Social Media Colors */
   --color-whatsapp: #25D366;
   --color-facebook: #1877F2;
-  --color-instagram: #E4405F;
+  --color-instagram: #c71fa3;
   --color-google-maps: #EA4335;
   --color-google: #4285F4;
 
@@ -840,8 +840,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 55px;
+  height: 55px;
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -858,6 +858,11 @@ body {
   outline-offset: 4px;
 }
 
+/*Aumenta tamanho do Maps para ficar igual*/
+.social-links__item--maps svg {
+  transform: scale(1.13);
+}
+
 .social-links__item--whatsapp:hover {
   color: var(--color-whatsapp);
 }
@@ -872,10 +877,6 @@ body {
 
 .social-links__item--maps:hover {
   color: var(--color-google-maps);
-}
-
-.social-links__item--google:hover {
-  color: var(--color-google);
 }
 
 /* ================================
