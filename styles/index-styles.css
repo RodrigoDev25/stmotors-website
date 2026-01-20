@@ -1532,6 +1532,97 @@ background: var(--color-primary);
 width: 24px;
 border-radius: 4px;
 }
+
+/* ===============================
+   SELL BIKE – IMAGE + GLASS
+   =============================== */
+
+.sell-bike {
+  position: relative;
+  background-image: url("../assets/aperto-maos.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4.5rem 1.5rem;
+}
+
+
+
+/* Overlay mais leve para não matar a imagem */
+.sell-bike__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+
+/* Container */
+.sell-bike__container {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Glass Card */
+.sell-bike__glass {
+  width: 100%;
+  padding: 2.5rem 2rem;
+  text-align: center;
+
+  /* card com transparência extrema */
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Texto */
+.sell-bike__title {
+  font-size: clamp(1.8rem, 2.8vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.sell-bike__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 520px;
+  margin: 0 auto 2.2rem;
+}
+
+/* CTA */
+.sell-bike__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.4rem;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+
+  background-color: #ffffff;
+  border-radius: 999px;
+  text-decoration: none;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sell-bike__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+
 /* ================================
 MEDIA QUERIES
 ================================ */
