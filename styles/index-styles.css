@@ -1220,6 +1220,37 @@ body {
   margin-bottom: var(--spacing-2xl);
 }
 
+.featured__arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-border-medium); /* Cor das setas */
+  }
+
+  .arrow {
+    animation: fluxo 2.5s infinite ease-in-out;
+    opacity: 0;
+  }
+
+  /* Delay para criar o efeito de sequência/fluxo */
+  .arrow-2 {
+    animation-delay: 1.25s;
+  }
+
+  @keyframes fluxo {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
 /* ================================
    CTA OTIMIZADO - Conversão por Micro-Copy
    Fundamentos: Processamento Fluente + Efeito Curiosidade
@@ -1229,7 +1260,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  margin-top: var(--spacing-2xl);
 }
 
 .featured__cta {
@@ -1758,7 +1788,7 @@ body {
   margin: var(--spacing-xl) auto 0;
   padding: var(--spacing-lg) var(--spacing-md);
   text-align: center;
-  
+
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1767,18 +1797,18 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  
+
   padding: 0.75rem 1.5rem;
-  
+
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-light);
   text-decoration: none;
-  
+
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  
+
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -2566,32 +2596,32 @@ body {
     min-height: 52px;
   }
 
-.footer__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-2xl);
-    }
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2xl);
+  }
 
-    /* Coluna Horário volta ao grid normal */
-    .footer__column:nth-child(3) {
-      grid-column: auto;
-    }
+  /* Coluna Horário volta ao grid normal */
+  .footer__column:nth-child(3) {
+    grid-column: auto;
+  }
 
-    .footer__link {
-      font-size: var(--font-size-sm);
-    }
+  .footer__link {
+    font-size: var(--font-size-sm);
+  }
 
-    .footer__link svg {
-      width: 18px;
-      height: 18px;
-    }
+  .footer__link svg {
+    width: 18px;
+    height: 18px;
+  }
 
-    .footer__hours {
-      font-size: var(--font-size-xs);
-    }
+  .footer__hours {
+    font-size: var(--font-size-xs);
+  }
 
-    .footer__map-wrapper iframe {
-      height: 350px;
-    }
+  .footer__map-wrapper iframe {
+    height: 350px;
+  }
 
 }
 
@@ -2809,17 +2839,17 @@ body {
   }
 
   .footer {
-      padding: var(--spacing-2xl) var(--spacing-lg) 0;
-    }
+    padding: var(--spacing-2xl) var(--spacing-lg) 0;
+  }
 
-    .footer__grid {
-      grid-template-columns: 1.2fr 1fr 1.5fr;
-      gap: var(--spacing-2xl);
-    }
+  .footer__grid {
+    grid-template-columns: 1.2fr 1fr 1.5fr;
+    gap: var(--spacing-2xl);
+  }
 
-    .footer__map-wrapper iframe {
-      height: 400px;
-    }
+  .footer__map-wrapper iframe {
+    height: 400px;
+  }
 }
 
 
@@ -2938,9 +2968,9 @@ body {
   }
 
   .footer__link,
-    .footer__badge {
-      transition: none !important;
-    }
+  .footer__badge {
+    transition: none !important;
+  }
 
 }
 
@@ -3005,10 +3035,10 @@ textarea:focus-visible {
 }
 
 .footer__link:focus-visible,
-  .footer__badge:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
+.footer__badge:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
 /* ================================
    PERFORMANCE OPTIMIZATIONS
