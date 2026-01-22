@@ -1238,21 +1238,21 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 15px 32px;
-  
+
   /* Design Focado: Verde da marca para reforço de identidade */
   background: var(--color-primary);
   color: #FFFFFF;
-  
+
   text-decoration: none;
   font-size: 1rem;
   font-weight: var(--font-weight-semibold);
   border-radius: 8px;
-  
+
   /* Affordance Visual: Botão "clicável" */
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgba(110, 175, 73, 0.2),
     0 1px 3px rgba(0, 0, 0, 0.1);
-  
+
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 48px;
   position: relative;
@@ -1267,12 +1267,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
   transition: left 0.5s ease;
 }
 
@@ -1283,14 +1281,14 @@ body {
 .featured__cta:hover {
   background: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 
+  box-shadow:
     0 6px 16px rgba(110, 175, 73, 0.3),
     0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .featured__cta:active {
   transform: translateY(0);
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgba(110, 175, 73, 0.2),
     0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -1333,7 +1331,8 @@ body {
 
 .check-svg {
   vertical-align: middle;
-  margin-top: -2px; /* Ajuste fino opcional */
+  margin-top: -2px;
+  /* Ajuste fino opcional */
   display: inline-block;
   flex-shrink: 0;
 }
@@ -1754,32 +1753,87 @@ body {
   border-radius: 4px;
 }
 
+.testimonials__review-cta {
+  max-width: 480px;
+  margin: var(--spacing-xl) auto 0;
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Link Simples com Seta */
+.testimonials__review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  
+  padding: 0.75rem 1.5rem;
+  
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-light);
+  text-decoration: none;
+  
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonials__review-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+.testimonials__review-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 3px;
+}
+
+/* Texto Explicativo */
+.testimonials__review-text {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: rgba(250, 250, 248, 0.7);
+
+  margin-top: 15px;
+  font-weight: var(--font-weight-normal);
+}
+
 /* ===============================
    SELL BIKE — CONVERSÃO OTIMIZADA
    =============================== */
 
 .sell-bike {
   position: relative;
-  background-image: url("../assets/aperto-maos.jpg"); /* NOVA IMAGEM */
+  background-image: url("../assets/aperto-maos.jpg");
   background-size: cover;
-  background-position: center 35%; /* Ajusta aperto de mãos no terço inferior */
+  background-position: center 35%;
+  /* Ajusta aperto de mãos no terço inferior */
   background-repeat: no-repeat;
   padding: 4rem 1.25rem 3rem;
   min-height: 520px;
   display: flex;
-  align-items: flex-start; /* Conteúdo no topo */
+  align-items: flex-start;
+  /* Conteúdo no topo */
 }
 
 /* Overlay com gradiente direcionado */
 .sell-bike__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 10, 10, 0.75) 0%,      /* Escuro no topo (protege texto) */
-    rgba(10, 10, 10, 0.35) 50%,     /* Transparente no meio */
-    rgba(10, 10, 10, 0.15) 100%     /* Quase transparente embaixo (preserva mãos) */
-  );
+  background: linear-gradient(180deg,
+      rgba(10, 10, 10, 0.75) 0%,
+      /* Escuro no topo (protege texto) */
+      rgba(10, 10, 10, 0.35) 50%,
+      /* Transparente no meio */
+      rgba(10, 10, 10, 0.15) 100%
+      /* Quase transparente embaixo (preserva mãos) */
+    );
   pointer-events: none;
 }
 
@@ -1803,12 +1857,14 @@ body {
   text-align: center;
 
   /* Glassmorphism Ultra-Sutil */
-  background: rgba(255, 255, 255, 0.04); /* Reduzido de 0.06 */
+  background: rgba(255, 255, 255, 0.04);
+  /* Reduzido de 0.06 */
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12); /* Reduzido de 0.18 */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* Reduzido de 0.18 */
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.06) inset;
@@ -1822,6 +1878,7 @@ body {
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1845,19 +1902,19 @@ body {
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem 0.875rem;
-  
+
   background: rgba(110, 175, 73, 0.15);
   border: 1px solid rgba(110, 175, 73, 0.3);
   border-radius: 50px;
-  
+
   font-size: 0.6875rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  
+
   margin-bottom: 1rem;
-  
+
   box-shadow: 0 2px 8px rgba(110, 175, 73, 0.15);
 }
 
@@ -1930,12 +1987,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   transition: left 0.5s ease;
 }
 
@@ -1977,6 +2032,225 @@ body {
 
 .sell-bike__cta:hover .sell-bike__cta-icon {
   transform: translateX(3px);
+}
+
+/* ================================
+     FOOTER PRINCIPAL
+     ================================ */
+.footer {
+  background: rgba(250, 250, 248, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  color: var(--color-text-primary);
+  padding: var(--spacing-2xl) var(--spacing-sm) 0;
+}
+
+.footer__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header do Footer (Título + Linha) */
+.footer__header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.footer__title {
+  font-family: 'Montserrat', var(--font-family);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-text-primary) 0%, transparent 100%);
+  border-radius: 2px;
+}
+
+/* Grid de Colunas (Mobile: 2 cols lado a lado, Tablet: 2 cols, Desktop: 3 cols) */
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Coluna */
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Coluna Horário ocupa 2 colunas em mobile */
+.footer__column:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.footer__column-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Links com Ícones */
+.footer__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-xs);
+  transition: all var(--transition-speed);
+  padding: 0.25rem 0;
+}
+
+.footer__link:hover {
+  color: var(--color-primary);
+  padding-left: 0.5rem;
+}
+
+.footer__link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+.footer__link--phone svg,
+.footer__link--whatsapp svg {
+  color: var(--color-text-secondary);
+}
+
+/* Horário de Funcionamento */
+.footer__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+}
+
+.footer__hours-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__hours-day {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.footer__hours-time {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ================================
+     SEÇÃO MAPA
+     ================================ */
+.footer__map-section {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.footer__map-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.footer__map-wrapper iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+}
+
+/* ================================
+     BADGES DE SEGURANÇA
+     ================================ */
+.footer__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  margin-top: var(--spacing-xl);
+}
+
+.footer__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-speed);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.footer__badge:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.footer__badge svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-primary);
+}
+
+/* ================================
+     COPYRIGHT
+     ================================ */
+.footer__bottom {
+  padding: var(--spacing-md) 0;
+  text-align: center;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.footer__copyright {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 /* ================================
@@ -2250,6 +2524,19 @@ body {
     right: 0;
   }
 
+  .testimonials__review-cta {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .testimonials__review-text {
+    font-size: var(--font-size-base);
+  }
+
+  .testimonials__review-link {
+    padding: 0.875rem 2rem;
+    font-size: var(--font-size-base);
+  }
+
   .sell-bike {
     padding: 5rem 2rem 3.5rem;
     min-height: 560px;
@@ -2278,6 +2565,34 @@ body {
     font-size: 1rem;
     min-height: 52px;
   }
+
+.footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-2xl);
+    }
+
+    /* Coluna Horário volta ao grid normal */
+    .footer__column:nth-child(3) {
+      grid-column: auto;
+    }
+
+    .footer__link {
+      font-size: var(--font-size-sm);
+    }
+
+    .footer__link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer__hours {
+      font-size: var(--font-size-xs);
+    }
+
+    .footer__map-wrapper iframe {
+      height: 350px;
+    }
+
 }
 
 /* DESKTOP (1024px+) */
@@ -2471,7 +2786,8 @@ body {
   .sell-bike {
     padding: 6rem 2.5rem 4rem;
     min-height: 600px;
-    background-position: center 30%; /* Ajusta foco nas mãos */
+    background-position: center 30%;
+    /* Ajusta foco nas mãos */
   }
 
   .sell-bike__container {
@@ -2491,7 +2807,21 @@ body {
     width: 18px;
     height: 18px;
   }
+
+  .footer {
+      padding: var(--spacing-2xl) var(--spacing-lg) 0;
+    }
+
+    .footer__grid {
+      grid-template-columns: 1.2fr 1fr 1.5fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .footer__map-wrapper iframe {
+      height: 400px;
+    }
 }
+
 
 /* LARGE DESKTOP (1280px+) */
 @media screen and (min-width: 1280px) {
@@ -2553,6 +2883,7 @@ body {
    ACESSIBILIDADE - MOTION
    ================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -2593,6 +2924,10 @@ body {
     transform: none !important;
   }
 
+  .testimonials__review-link {
+    transition: none !important;
+  }
+
   .sell-bike__glass {
     animation: none;
   }
@@ -2601,6 +2936,12 @@ body {
   .sell-bike__cta-icon {
     transition: none;
   }
+
+  .footer__link,
+    .footer__badge {
+      transition: none !important;
+    }
+
 }
 
 /* ================================
@@ -2663,6 +3004,12 @@ textarea:focus-visible {
   }
 }
 
+.footer__link:focus-visible,
+  .footer__badge:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
 /* ================================
    PERFORMANCE OPTIMIZATIONS
    ================================ */
@@ -2692,6 +3039,7 @@ textarea:focus-visible {
 
 /* Print styles */
 @media print {
+
   .header,
   .cookie-consent,
   .hero__search,
