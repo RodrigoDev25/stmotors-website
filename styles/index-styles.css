@@ -1,4 +1,10 @@
 /* ================================
+   ST MOTORS - STYLESHEET OTIMIZADO
+   Versão: 2.0 Enhanced
+   Performance + Acessibilidade + SEO
+   ================================ */
+
+/* ================================
    RESET & BASE
    ================================ */
 *,
@@ -54,7 +60,7 @@
   --spacing-3xl: 6rem;
 
   /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -93,6 +99,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -103,6 +110,7 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* ================================
@@ -131,6 +139,7 @@ body {
   font-weight: var(--font-weight-semibold);
   z-index: var(--z-skip-link);
   transition: top var(--transition-speed) var(--transition-ease);
+  border-radius: 0 0 8px 0;
 }
 
 .skip-link:focus {
@@ -153,6 +162,7 @@ body {
   z-index: var(--z-cookie-consent);
   padding: var(--spacing-md);
   animation: slideUp 0.4s var(--transition-ease);
+  will-change: transform, opacity;
 }
 
 @keyframes slideUp {
@@ -209,6 +219,12 @@ body {
   color: var(--color-primary);
 }
 
+.cookie-consent__link:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .cookie-consent__actions {
   display: flex;
   flex-wrap: wrap;
@@ -237,6 +253,10 @@ body {
   background: var(--color-primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(110, 175, 73, 0.3);
+}
+
+.cookie-consent__button--primary:active {
+  transform: translateY(0);
 }
 
 .cookie-consent__button--secondary {
@@ -271,6 +291,7 @@ body {
   box-shadow: 0 8px 32px rgba(15, 15, 15, 0.12);
   z-index: var(--z-header);
   transition: all var(--transition-speed) var(--transition-ease);
+  contain: layout style paint;
 }
 
 .header.scrolled {
@@ -303,6 +324,12 @@ body {
   opacity: 0.85;
 }
 
+.header__logo-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 .header__logo-img {
   height: 42px;
   width: auto;
@@ -319,6 +346,8 @@ body {
   list-style: none;
   align-items: center;
   gap: var(--spacing-xs);
+  margin: 0;
+  padding: 0;
 }
 
 .nav__link {
@@ -357,6 +386,12 @@ body {
   color: var(--color-primary);
 }
 
+.nav__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Mobile Menu Toggle */
 .header__menu-toggle {
   display: flex;
@@ -374,6 +409,12 @@ body {
 
 .header__menu-toggle:hover {
   transform: scale(1.05);
+}
+
+.header__menu-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 .header__menu-toggle span {
@@ -410,6 +451,7 @@ body {
   overflow-y: auto;
   z-index: var(--z-mobile-menu);
   transition: right var(--transition-speed) var(--transition-ease);
+  will-change: transform;
 }
 
 .header__nav-mobile.active {
@@ -446,6 +488,11 @@ body {
   padding-left: var(--spacing-md);
 }
 
+.nav__link-mobile:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
 /* Overlay */
 .header__overlay {
   position: fixed;
@@ -478,6 +525,7 @@ body {
   justify-content: center;
   padding-top: var(--header-height-mobile);
   overflow: hidden;
+  contain: layout style;
 }
 
 /* Hero Background */
@@ -543,6 +591,7 @@ body {
   max-width: 180px;
   transition: all var(--transition-speed) var(--transition-ease);
   min-height: 44px;
+  will-change: transform;
 }
 
 .hero__location-badge:hover {
@@ -621,6 +670,7 @@ body {
     0 2px 4px rgba(0, 0, 0, 0.5),
     0 4px 8px rgba(0, 0, 0, 0.3);
   animation: fadeInDownPulse 20s ease-in-out infinite;
+  will-change: opacity, transform;
 }
 
 @keyframes fadeInDownPulse {
@@ -856,9 +906,10 @@ body {
 .social-links__item:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
+  border-radius: 4px;
 }
 
-/*Aumenta tamanho do Maps para ficar igual*/
+/* Aumenta tamanho do Maps para ficar igual */
 .social-links__item--maps svg {
   transform: scale(1.13);
 }
@@ -965,6 +1016,7 @@ body {
   width: 100%;
   margin: 0;
   gap: var(--spacing-md);
+  will-change: transform;
 }
 
 .trust-card::before {
@@ -1274,13 +1326,18 @@ body {
   margin: 0;
   opacity: 0.85;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .check-svg {
-    vertical-align: middle;
-    margin-top: -2px; /* Ajuste fino opcional */
-    display: inline-block;
-  }
+  vertical-align: middle;
+  margin-top: -2px; /* Ajuste fino opcional */
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 /* Bike Card - MOBILE: Layout Horizontal */
 .bike-card {
   background: #FAFAF8;
@@ -1292,6 +1349,7 @@ body {
   display: flex;
   flex-direction: row;
   min-height: 200px;
+  will-change: transform;
 }
 
 /* EFEITO APENAS NO CARD */
@@ -1308,6 +1366,11 @@ body {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+.bike-card__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Imagem à esquerda - 50% da largura COM MARGEM PEQUENA */
@@ -1363,6 +1426,8 @@ body {
 .bike-card__brand {
   color: red;
   margin: 5px 0px 3px 0px;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
 }
 
 .bike-card__name {
@@ -1396,6 +1461,7 @@ body {
   width: 12px;
   height: 12px;
   stroke-width: 2.5;
+  flex-shrink: 0;
 }
 
 .bike-card__footer {
@@ -1424,11 +1490,9 @@ body {
   line-height: 1.2;
 }
 
-
-
 /* ================================
-TESTIMONIALS SECTION (Social Proof Slider)
-================================ */
+   TESTIMONIALS SECTION (Social Proof Slider)
+   ================================ */
 .testimonials {
   background: var(--color-bg-dark);
   padding: var(--spacing-2xl) 0;
@@ -1624,6 +1688,11 @@ TESTIMONIALS SECTION (Social Proof Slider)
   transform: translateY(-50%) scale(0.95);
 }
 
+.testimonials__nav:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
 .testimonials__nav svg {
   width: 20px;
   height: 20px;
@@ -1674,11 +1743,17 @@ TESTIMONIALS SECTION (Social Proof Slider)
   transform: scale(1.2);
 }
 
+.testimonial-dot:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
 .testimonial-dot.active {
   background: var(--color-primary);
   width: 24px;
   border-radius: 4px;
 }
+
 /* ===============================
    SELL BIKE — CONVERSÃO OTIMIZADA
    =============================== */
@@ -1787,23 +1862,22 @@ TESTIMONIALS SECTION (Social Proof Slider)
 }
 
 .sell-bike__eyebrow svg {
-  color: var(--color-primary-light);
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* ================================
-   TÍTULO — Benefício Claro
+   TITLE — Benefício-Driven (H2)
    ================================ */
 .sell-bike__title {
-  font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
-  line-height: 1.15;
-  color: #FFFFFF;
-  margin-bottom: 0.625rem;
-  letter-spacing: -0.02em;
-  text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.6),
-    0 1px 3px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.98);
+  margin: 0 0 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* ================================
@@ -1883,7 +1957,7 @@ TESTIMONIALS SECTION (Social Proof Slider)
 
 .sell-bike__cta:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 .sell-bike__cta-text {
@@ -1898,6 +1972,7 @@ TESTIMONIALS SECTION (Social Proof Slider)
   height: 16px;
   stroke-width: 2.5;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
 }
 
 .sell-bike__cta:hover .sell-bike__cta-icon {
@@ -1905,8 +1980,8 @@ TESTIMONIALS SECTION (Social Proof Slider)
 }
 
 /* ================================
-MEDIA QUERIES
-================================ */
+   MEDIA QUERIES
+   ================================ */
 
 /* TABLET (768px+) */
 @media screen and (min-width: 768px) {
@@ -2106,16 +2181,6 @@ MEDIA QUERIES
     border-top: 1px solid var(--color-border-light);
   }
 
-  .showroom__filter-panel {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .filter-group {
-    flex: 1;
-    min-width: 200px;
-  }
-
   /* Testimonials - Tablet */
   .testimonials {
     padding: var(--spacing-3xl) 0;
@@ -2184,9 +2249,8 @@ MEDIA QUERIES
   .testimonials__nav--next {
     right: 0;
   }
-}
 
-.sell-bike {
+  .sell-bike {
     padding: 5rem 2rem 3.5rem;
     min-height: 560px;
   }
@@ -2214,11 +2278,7 @@ MEDIA QUERIES
     font-size: 1rem;
     min-height: 52px;
   }
-
-  .sell-bike__guarantee {
-    font-size: 0.75rem;
-    margin-top: 1rem;
-  }
+}
 
 /* DESKTOP (1024px+) */
 @media screen and (min-width: 1024px) {
@@ -2490,18 +2550,9 @@ MEDIA QUERIES
 }
 
 /* ================================
-ACESSIBILIDADE - MOTION
-================================ */
+   ACESSIBILIDADE - MOTION
+   ================================ */
 @media (prefers-reduced-motion: reduce) {
-  .hero__eyebrow {
-    animation: none;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  .cookie-consent {
-    animation: none;
-  }
-
   *,
   *::before,
   *::after {
@@ -2509,6 +2560,15 @@ ACESSIBILIDADE - MOTION
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .hero__eyebrow {
+    animation: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .cookie-consent {
+    animation: none;
   }
 
   .trust-card,
@@ -2543,15 +2603,19 @@ ACESSIBILIDADE - MOTION
   }
 }
 
-.sell-bike__cta:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 4px;
+/* ================================
+   ACESSIBILIDADE GLOBAL
+   ================================ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-/* ================================
-ACESSIBILIDADE GLOBAL
-================================ */
-:focus-visible {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -2559,6 +2623,9 @@ ACESSIBILIDADE GLOBAL
 @media (prefers-contrast: high) {
   .hero__eyebrow {
     text-shadow: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
   }
 
   .hero__location-cta {
@@ -2572,7 +2639,7 @@ ACESSIBILIDADE GLOBAL
   }
 
   .trust-card__description {
-    color: rgba(250, 250, 248, 0.9);
+    color: rgba(250, 250, 248, 0.95);
   }
 
   .bike-card {
@@ -2589,5 +2656,59 @@ ACESSIBILIDADE GLOBAL
 
   .testimonials__nav {
     border: 2px solid var(--color-primary);
+  }
+
+  .sell-bike__cta {
+    border: 2px solid #FFFFFF;
+  }
+}
+
+/* ================================
+   PERFORMANCE OPTIMIZATIONS
+   ================================ */
+
+/* GPU Acceleration para elementos animados */
+.header,
+.hero__location-badge,
+.hero__search-wrapper,
+.trust-card,
+.bike-card,
+.testimonial-card,
+.sell-bike__glass {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Contain layout para seções independentes */
+.header,
+.hero,
+.social-links,
+.value-section,
+.featured,
+.testimonials,
+.sell-bike {
+  contain: layout style paint;
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .cookie-consent,
+  .hero__search,
+  .social-links,
+  .testimonials__nav,
+  .testimonials__dots {
+    display: none;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .bike-card,
+  .trust-card,
+  .testimonial-card {
+    page-break-inside: avoid;
   }
 }
