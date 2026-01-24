@@ -763,7 +763,7 @@ body {
 .hero__search-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
   opacity: 1;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
 }
 
 .hero__search-input::-webkit-search-cancel-button {
@@ -1347,24 +1347,42 @@ body {
 
 /* Micro-Copy de Suporte: Reduz Fricção Cognitiva */
 .featured__cta-subtext {
-  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  
+  /* Background clean com borda destacada */
+  background: rgba(250, 250, 248, 0.95);
+  border: 1.5px solid rgba(110, 175, 73, 0.25);
+  border-radius: 8px;
+  
+  font-size: 0.8125rem;
   color: var(--color-text-secondary);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   text-align: center;
   margin: 0;
-  opacity: 0.85;
-  letter-spacing: 0.01em;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  letter-spacing: -0.01em;
+  
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .check-svg {
-  vertical-align: middle;
-  margin-top: -2px;
-  /* Ajuste fino opcional */
-  display: inline-block;
   flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.featured__cta-subtext span {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 /* Bike Card - MOBILE: Layout Horizontal */
@@ -1421,7 +1439,6 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* REMOVIDO: transition: transform 0.5s var(--transition-ease); */
 }
 
 .bike-card__badge {
@@ -2265,6 +2282,10 @@ body {
   width: 16px;
   height: 16px;
   color: var(--color-primary);
+}
+
+.footer__badges a {
+  text-decoration: none;
 }
 
 /* ================================
