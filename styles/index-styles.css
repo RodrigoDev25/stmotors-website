@@ -291,7 +291,6 @@ body {
   box-shadow: 0 8px 32px rgba(15, 15, 15, 0.12);
   z-index: var(--z-header);
   transition: all var(--transition-speed) var(--transition-ease);
-  contain: layout style paint;
 }
 
 .header.scrolled {
@@ -1217,7 +1216,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: 0;
 }
 
 .featured__arrows {
@@ -1225,6 +1224,7 @@ body {
     justify-content: center;
     align-items: center;
     color: var(--color-border-medium); /* Cor das setas */
+    margin-bottom: -15px;
   }
 
   .arrow {
@@ -1786,10 +1786,9 @@ body {
 .testimonials__review-cta {
   max-width: 480px;
   margin: var(--spacing-xl) auto 0;
+  margin-top: 5px;
   padding: var(--spacing-lg) var(--spacing-md);
   text-align: center;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Link Simples com Seta */
@@ -3054,17 +3053,6 @@ textarea:focus-visible {
 .sell-bike__glass {
   transform: translateZ(0);
   will-change: transform;
-}
-
-/* Contain layout para seções independentes */
-.header,
-.hero,
-.social-links,
-.value-section,
-.featured,
-.testimonials,
-.sell-bike {
-  contain: layout style paint;
 }
 
 /* Print styles */
