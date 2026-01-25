@@ -763,7 +763,7 @@ body {
 .hero__search-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
   opacity: 1;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
 }
 
 .hero__search-input::-webkit-search-cancel-button {
