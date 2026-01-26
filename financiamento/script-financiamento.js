@@ -1,4 +1,49 @@
 // ================================
+// MOBILE MENU TOGGLE
+// ================================
+const menuToggle = document.querySelector('.header__menu-toggle');
+const mobileMenu = document.querySelector('.header__nav-mobile');
+const overlay = document.querySelector('.header__overlay');
+const body = document.body;
+
+function toggleMenu() {
+  const isOpen = menuToggle.classList.contains('active');
+  
+  menuToggle.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  body.style.overflow = isOpen ? '' : 'hidden';
+  
+  menuToggle.setAttribute('aria-expanded', !isOpen);
+  menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu de navegação' : 'Fechar menu de navegação');
+}
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', toggleMenu);
+}
+
+if (overlay) {
+  overlay.addEventListener('click', toggleMenu);
+}
+
+// Fechar menu ao clicar em link
+document.querySelectorAll('.nav__link-mobile').forEach(link => {
+  link.addEventListener('click', () => {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      toggleMenu();
+    }
+  });
+});
+
+// Fechar menu com tecla Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+    toggleMenu();
+  }
+});
+
+// ================================
 // WHATSAPP FLUTUANTE - Comportamento Inteligente
 // Esconde quando usuário chega na seção CTA final
 // ================================
@@ -80,3 +125,6 @@
   console.log('✅ WhatsApp Float inicializado');
 
 })();
+
+
+
