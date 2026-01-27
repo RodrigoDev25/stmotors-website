@@ -37,7 +37,7 @@
             --text-secondary: #8696A0;
             --glass-bg: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.18);
-            --error: #FF3B30;
+            --error: #f36159;
             --success: #34C759;
             --input-bg: rgba(255, 255, 255, 0.05);
         }
@@ -530,7 +530,7 @@
                     <div class="input-wrapper">
                         <input type="text" id="name" name="name" placeholder="Ex: João Silva Santos" required
                             pattern="[A-Za-zÀ-ÿ\s]{3,}">
-                        <span class="input-icon">👤</span>
+                        <span class="input-icon">&#x1F464;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Por favor, insira seu nome completo</span>
@@ -540,8 +540,8 @@
                 <div class="input-group">
                     <label class="input-label" for="phone">Telefone</label>
                     <div class="input-wrapper">
-                        <input type="tel" id="phone" name="phone" placeholder="Ex: (11) 99999-9999" required>
-                        <span class="input-icon">📱</span>
+                        <input type="tel" id="phone" name="phone" placeholder="Ex: (16) 99999-9999" required>
+                        <span class="input-icon">&#x1F4F1;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Telefone inválido</span>
@@ -553,12 +553,12 @@
                     <div class="input-wrapper">
                         <input type="tel" id="phoneConfirm" name="phoneConfirm" placeholder="Confirme seu telefone"
                             required>
-                        <span class="input-icon">🔁</span>
+                        <span class="input-icon">&#x1F4F1;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Os telefones não coincidem</span>
                     <div class="phone-mismatch-warning" id="phoneMismatchWarning">
-                        ⚠️ Os números de telefone não são iguais. Por favor, verifique.
+                        &#x26A0;&#xFE0F; Os números de telefone não são iguais. Por favor, verifique.
                     </div>
                 </div>
 
@@ -568,7 +568,7 @@
                     <div class="input-wrapper">
                         <input type="text" id="birthdate" name="birthdate" placeholder="dd/mm/aaaa" required
                             maxlength="10" inputmode="numeric">
-                        <span class="input-icon">📅</span>
+                        <span class="input-icon">&#x1F4C5;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Data inválida (formato: dd/mm/aaaa, mínimo 18 anos)</span>
@@ -609,7 +609,7 @@
                         <div class="input-wrapper">
                             <input type="text" id="valorEntrada" name="valorEntrada"
                                 placeholder="Informe apenas o valor" inputmode="numeric">
-                            <span class="input-icon">💰</span>
+                            <span class="input-icon">&#x1F4B0;</span>
                         </div>
                     </div>
                 </div>
@@ -620,7 +620,7 @@
                     <div class="input-wrapper">
                         <input type="text" id="renda" name="renda" placeholder="Informe apenas o valor" required
                             inputmode="numeric">
-                        <span class="input-icon">💵</span>
+                        <span class="input-icon">&#x1F4B5;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Por favor, informe sua renda</span>
@@ -628,17 +628,18 @@
 
                 <!-- Escolha da moto -->
                 <div class="input-group">
-                    <label class="input-label" for="moto">Escolha a moto <span class="emoji">🏍️</span></label>
-                    <select id="moto" name="moto" required>
-                        <option value="">Selecione um modelo</option>
-                        <option value="honda-cg-160">Honda CG 160 Start</option>
-                        <option value="yamaha-factor-150">Yamaha Factor 150</option>
-                        <option value="honda-bros-160">Honda Bros 160</option>
-                        <option value="yamaha-lander-250">Yamaha Lander 250</option>
-                        <option value="honda-cb-500x">Honda CB 500X</option>
-                        <option value="kawasaki-ninja-400">Kawasaki Ninja 400</option>
-                        <option value="bmw-g310gs">BMW G 310 GS</option>
-                    </select>
+                    <label class="input-label" for="moto">Escolha a moto <label class="input-label" for="moto">Escolha a
+                            moto <span class="emoji">&#x1F3CD;&#xFE0F;</span></label>
+                        <select id="moto" name="moto" required>
+                            <option value="">Selecione um modelo</option>
+                            <option value="honda-cg-160">Honda CG 160 Start</option>
+                            <option value="yamaha-factor-150">Yamaha Factor 150</option>
+                            <option value="honda-bros-160">Honda Bros 160</option>
+                            <option value="yamaha-lander-250">Yamaha Lander 250</option>
+                            <option value="honda-cb-500x">Honda CB 500X</option>
+                            <option value="kawasaki-ninja-400">Kawasaki Ninja 400</option>
+                            <option value="bmw-g310gs">BMW G 310 GS</option>
+                        </select>
                 </div>
 
                 <!-- Botão enviar -->
@@ -663,7 +664,7 @@
 
             <!-- Trust badge -->
             <div class="trust-badge">
-                🔒 Dados protegidos SSL · Suas informações são confidenciais
+                &#x1F512; Dados protegidos SSL · Suas informações são confidenciais
             </div>
         </div>
     </div>
@@ -734,7 +735,7 @@
             const year = parseInt(parts[2], 10);
 
             // Valida dia, mês e ano
-            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2010) {
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1920 || year > 2010) {
                 return false;
             }
 
@@ -874,17 +875,16 @@
             // Monta mensagem WhatsApp
             const mensagem = `Olá, eu gostaria de fazer uma simulação. Meus dados são:
 
-📋 *Nome:* ${formData.nome}
-📱 *Telefone:* ${formData.telefone}
-🎂 *Data Nascimento:* ${formData.dataNascimento}
-🪪 *CNH:* ${formData.cnh}
-💰 *Entrada:* ${formData.entrada}
-${formData.entrada === 'sim' ? `💵 *Valor Entrada:* ${formData.valorEntrada}` : ''}
-💼 *Renda:* ${formData.renda}
-🏍️ *Moto:* ${formData.moto}
+*Nome:* ${formData.nome}
+*Telefone:* ${formData.telefone}
+*Data Nascimento:* ${formData.dataNascimento}
+*CNH:* ${formData.cnh}
+*Entrada:* ${formData.entrada}
+${formData.entrada === 'sim' ? `*Valor Entrada:* ${formData.valorEntrada}` : ''}
+*Renda:* ${formData.renda}
+*Moto:* ${formData.moto}
 
 Aguardo retorno para prosseguir com a simulação!`;
-
             // Encode para URL
             const mensagemEncoded = encodeURIComponent(mensagem);
 
