@@ -512,7 +512,15 @@
     <div class="container">
         <div class="form-bubble">
             <h1 class="form-title">
-                <span class="emoji">💬</span> Simulação de Financiamento
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.124.561 4.113 1.536 5.832L0 24l6.312-1.536A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.02c-1.905 0-3.699-.531-5.22-1.449l-.375-.225-3.873.942.966-3.711-.246-.387A9.954 9.954 0 012.98 12C2.98 6.465 7.465 1.98 12 1.98S21.02 6.465 21.02 12 16.535 22.02 12 22.02z"
+                        fill="#25D366" />
+                    <path
+                        d="M17.337 14.457c-.288-.144-1.704-.84-1.968-.936-.264-.096-.456-.144-.648.144-.192.288-.768.936-.936 1.128-.168.192-.336.216-.624.072-.288-.144-1.224-.45-2.328-1.44-.864-.768-1.44-1.716-1.608-2.004-.168-.288-.018-.444.126-.588.132-.132.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.648-1.56-.888-2.136-.24-.576-.48-.48-.648-.48h-.552c-.192 0-.504.072-.768.36-.264.288-1.008.984-1.008 2.4s1.032 2.784 1.176 2.976c.144.192 2.04 3.12 4.944 4.368.69.3 1.224.48 1.644.612.69.216 1.32.192 1.824.12.552-.084 1.704-.696 1.944-1.368.24-.672.24-1.248.168-1.368-.072-.12-.264-.192-.552-.336z"
+                        fill="#25D366" />
+                </svg>
+                Simulação de Financiamento
             </h1>
 
             <form id="financingForm" novalidate>
@@ -558,11 +566,12 @@
                 <div class="input-group">
                     <label class="input-label" for="birthdate">Data de nascimento</label>
                     <div class="input-wrapper">
-                        <input type="date" id="birthdate" name="birthdate" required max="2006-01-27">
+                        <input type="text" id="birthdate" name="birthdate" placeholder="dd/mm/aaaa" required
+                            maxlength="10" inputmode="numeric">
                         <span class="input-icon">📅</span>
                         <span class="validation-icon">✓</span>
                     </div>
-                    <span class="error-message">Data inválida (mínimo 18 anos)</span>
+                    <span class="error-message">Data inválida (formato: dd/mm/aaaa, mínimo 18 anos)</span>
                 </div>
 
                 <!-- CNH -->
@@ -705,6 +714,68 @@
             checkPhoneMatch();
         });
 
+        // Máscara data de nascimento
+        const birthdateInput = document.getElementById('birthdate');
+
+        function dateMask(value) {
+            return value
+                .replace(/\D/g, '')
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .replace(/(\d{4})\d+?$/, '$1');
+        }
+
+        function validateAge(dateString) {
+            const parts = dateString.split('/');
+            if (parts.length !== 3) return false;
+
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+
+            // Valida dia, mês e ano
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2010) {
+                return false;
+            }
+
+            // Cria data
+            const birthDate = new Date(year, month - 1, day);
+            const today = new Date();
+
+            // Calcula idade
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return age >= 18;
+        }
+
+        birthdateInput.addEventListener('input', (e) => {
+            e.target.value = dateMask(e.target.value);
+
+            // Valida quando tiver formato completo
+            if (e.target.value.length === 10) {
+                if (validateAge(e.target.value)) {
+                    e.target.classList.remove('error');
+                } else {
+                    e.target.classList.add('error');
+                }
+            }
+        });
+
+        birthdateInput.addEventListener('blur', (e) => {
+            if (e.target.value.length === 10) {
+                if (!validateAge(e.target.value)) {
+                    e.target.classList.add('error');
+                }
+            } else if (e.target.value.length > 0) {
+                e.target.classList.add('error');
+            }
+        });
+
         // Verificação em tempo real de telefones
         function checkPhoneMatch() {
             const phone = phoneInput.value;
@@ -777,6 +848,14 @@
                         input.classList.add('error');
                     }
                 });
+                return;
+            }
+
+            // Validação específica da data de nascimento
+            const birthdateValue = document.getElementById('birthdate').value;
+            if (birthdateValue.length !== 10 || !validateAge(birthdateValue)) {
+                document.getElementById('birthdate').classList.add('error');
+                document.getElementById('birthdate').focus();
                 return;
             }
 
