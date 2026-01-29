@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Simule seu financiamento de moto em 3 minutos. Aprovação rápida e condições especiais na ST Motors.">
+    <meta name="theme-color" content="#1a3a2e">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WhatsApp - Simulação - ST Motors">
+    <meta property="og:description" content="Simule agora e realize o sonho da sua moto">
+    <meta property="og:type" content="website">
+
+    <title>WhatsApp - Simulação - ST</title>
+
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://api.whatsapp.com">
+
+    <!-- Font WhatsApp (Segoe UI) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="styles-simulacao.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <img src="../../assets/st-icone.png" alt="ST Motors" class="logo-img">
+        </div>
+        <div class="header-right">
+            <div class="simulacao-label">Simulação</div>
+            <div class="whatsapp-brand">WhatsApp</div>
+        </div>
+    </header>
+
+    <!-- Container principal -->
+    <div class="container">
+        <div class="form-bubble">
+            <h1 class="form-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.124.561 4.113 1.536 5.832L0 24l6.312-1.536A11.949 11.949 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22.02c-1.905 0-3.699-.531-5.22-1.449l-.375-.225-3.873.942.966-3.711-.246-.387A9.954 9.954 0 012.98 12C2.98 6.465 7.465 1.98 12 1.98S21.02 6.465 21.02 12 16.535 22.02 12 22.02z"
+                        fill="#25D366" />
+                    <path
+                        d="M17.337 14.457c-.288-.144-1.704-.84-1.968-.936-.264-.096-.456-.144-.648.144-.192.288-.768.936-.936 1.128-.168.192-.336.216-.624.072-.288-.144-1.224-.45-2.328-1.44-.864-.768-1.44-1.716-1.608-2.004-.168-.288-.018-.444.126-.588.132-.132.288-.336.432-.504.144-.168.192-.288.288-.48.096-.192.048-.36-.024-.504-.072-.144-.648-1.56-.888-2.136-.24-.576-.48-.48-.648-.48h-.552c-.192 0-.504.072-.768.36-.264.288-1.008.984-1.008 2.4s1.032 2.784 1.176 2.976c.144.192 2.04 3.12 4.944 4.368.69.3 1.224.48 1.644.612.69.216 1.32.192 1.824.12.552-.084 1.704-.696 1.944-1.368.24-.672.24-1.248.168-1.368-.072-.12-.264-.192-.552-.336z"
+                        fill="#25D366" />
+                </svg>
+                Simulação de Financiamento
+            </h1>
+
+            <form id="financingForm" novalidate>
+                <!-- Nome -->
+                <div class="input-group">
+                    <label class="input-label" for="name">Nome</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="name" name="name" placeholder="Ex: João Silva Santos" required
+                            pattern="[A-Za-zÀ-ÿ\s]{3,}">
+                        <span class="input-icon">&#x1F464;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">Por favor, insira seu nome completo</span>
+                </div>
+
+                <!-- Telefone -->
+                <div class="input-group">
+                    <label class="input-label" for="phone">Telefone</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="phone" name="phone" placeholder="Ex: (16) 99999-9999" required>
+                        <span class="input-icon">&#x1F4F1;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">Telefone inválido</span>
+                </div>
+
+                <!-- Repetir telefone -->
+                <div class="input-group">
+                    <label class="input-label" for="phoneConfirm">Repetir telefone</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="phoneConfirm" name="phoneConfirm" placeholder="Confirme seu telefone"
+                            required>
+                        <span class="input-icon">&#x1F4F1;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">Os telefones não coincidem</span>
+                    <div class="phone-mismatch-warning" id="phoneMismatchWarning">
+                        &#x26A0;&#xFE0F; Os números de telefone não são iguais. Por favor, verifique.
+                    </div>
+                </div>
+
+                <!-- Data de nascimento -->
+                <div class="input-group">
+                    <label class="input-label" for="birthdate">Data de nascimento</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="birthdate" name="birthdate" placeholder="dd/mm/aaaa" required
+                            maxlength="10" inputmode="numeric">
+                        <span class="input-icon">&#x1F4C5;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">Data inválida (formato: dd/mm/aaaa, mínimo 18 anos)</span>
+                </div>
+
+                <!-- CNH -->
+                <div class="input-group">
+                    <label class="input-label">Possui alguma habilitação (CNH) válida?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="cnhYes" name="cnh" value="sim" required>
+                            <label class="radio-label" for="cnhYes">✓ Sim</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="cnhNo" name="cnh" value="nao">
+                            <label class="radio-label" for="cnhNo">✗ Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entrada -->
+                <div class="input-group">
+                    <label class="input-label">Pretende dar entrada?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="entradaYes" name="entrada" value="sim" required>
+                            <label class="radio-label" for="entradaYes">✓ Sim</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="entradaNo" name="entrada" value="nao">
+                            <label class="radio-label" for="entradaNo">✗ Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Campo condicional: valor entrada -->
+                    <div class="conditional-field" id="valorEntradaField">
+                        <label class="input-label" for="valorEntrada">Valor da entrada</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="valorEntrada" name="valorEntrada"
+                                placeholder="Informe apenas o valor" inputmode="numeric">
+                            <span class="input-icon">&#x1F4B0;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renda -->
+                <div class="input-group">
+                    <label class="input-label" for="renda">Renda mensal comprovada (holerite ou por extrato
+                        bancário)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="renda" name="renda" placeholder="Informe apenas o valor" required
+                            inputmode="numeric">
+                        <span class="input-icon">&#x1F4B5;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">Por favor, informe sua renda</span>
+                </div>
+
+                <!-- Escolha da moto 1 -->
+                <div class="input-group">
+                    <label class="input-label" for="moto1">Escolha a moto (1ª opção) <span
+                            class="emoji">&#x1F3CD;&#xFE0F;</span></label>
+                    <select id="moto1" name="moto1">
+                        <option value="">Selecione um modelo</option>
+                    </select>
+                </div>
+
+                <!-- Escolha da moto 2 -->
+                <div class="input-group">
+                    <label class="input-label" for="moto2">Escolha a moto (2ª opção) <span
+                            class="emoji">&#x1F3CD;&#xFE0F;</span></label>
+                    <select id="moto2" name="moto2">
+                        <option value="">Selecione um modelo</option>
+                    </select>
+                </div>
+
+                <!-- Botão enviar -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Enviar Simulação
+                </button>
+
+                <!-- Navegação -->
+                <div class="nav-links">
+                    <a href="#" class="nav-link" onclick="history.back(); return false;">
+                        ← Voltar
+                    </a>
+                    <a href="https://stmotorsara.com.br" class="nav-link" target="_blank">
+                        Ir para o site →
+                    </a>
+                </div>
+            </form>
+
+            <!-- Trust badge -->
+            <div class="trust-badge">
+                &#x1F512; Dados protegidos SSL · Suas informações são confidenciais
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão flutuante WhatsApp -->
+    <a href="https://wa.me/5516997305602" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <svg viewBox="0 0 32 32">
+            <path
+                d="M16 0C7.164 0 0 7.164 0 16c0 2.832.748 5.484 2.048 7.776L0 32l8.416-2.048A15.932 15.932 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.36c-2.54 0-4.932-.708-6.96-1.932l-.5-.3-5.164 1.256 1.288-4.948-.328-.516A13.272 13.272 0 012.64 16C2.64 8.62 8.62 2.64 16 2.64S29.36 8.62 29.36 16 23.38 29.36 16 29.36z" />
+            <path
+                d="M23.116 19.276c-.384-.192-2.272-1.12-2.624-1.248-.352-.128-.608-.192-.864.192-.256.384-1.024 1.248-1.248 1.504-.224.256-.448.288-.832.096-.384-.192-1.632-.6-3.104-1.92-1.152-1.024-1.92-2.288-2.144-2.672-.224-.384-.024-.592.168-.784.176-.176.384-.448.576-.672.192-.224.256-.384.384-.64.128-.256.064-.48-.032-.672-.096-.192-.864-2.08-1.184-2.848-.32-.768-.64-.64-.864-.64h-.736c-.256 0-.672.096-1.024.48-.352.384-1.344 1.312-1.344 3.2s1.376 3.712 1.568 3.968c.192.256 2.72 4.16 6.592 5.824.92.4 1.632.64 2.192.816.92.288 1.76.256 2.432.16.736-.112 2.272-.928 2.592-1.824.32-.896.32-1.664.224-1.824-.096-.16-.352-.256-.736-.448z" />
+        </svg>
+    </a>
+
+    <!-- Loading overlay -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="script-simulacao.js"></script>
+</body>
+
+</html>
