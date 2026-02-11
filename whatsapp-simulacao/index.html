@@ -22,14 +22,452 @@
     <!-- Font WhatsApp (Segoe UI) -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="styles-simulacao.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #0d1418;
+            --whatsapp-teal: #1a3a2e;
+            --text-primary: #E9EDEF;
+            --text-secondary: #8696A0;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --error: #f36159;
+            --success: #34C759;
+            --input-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--whatsapp-dark) 0%, var(--whatsapp-teal) 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 80px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header com glassmorphism */
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            display: block;
+            justify-self: right;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+            margin: auto;
+        }
+
+        .simulacao-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .whatsapp-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+            letter-spacing: -0.3px;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 480px;
+            margin: 24px auto;
+            padding: 0 16px;
+        }
+
+        .form-bubble {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .emoji {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        /* Inputs modernos */
+        .input-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 12px;
+            font-size: 18px;
+            opacity: 0.5;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            background: var(--input-bg);
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 16px;
+            padding: 12px 40px 12px 12px;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        input:focus,
+        select:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom-color: var(--whatsapp-green);
+            transform: scale(1.01);
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border-bottom-color: var(--success);
+        }
+
+        input.error {
+            border-bottom-color: var(--error);
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            75% {
+                transform: translateX(8px);
+            }
+        }
+
+        .validation-icon {
+            position: absolute;
+            right: 40px;
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            line-height: 1;
+        }
+
+        input:valid:not(:placeholder-shown)~.validation-icon {
+            opacity: 1;
+        }
+
+        .error-message {
+            display: none;
+            font-size: 12px;
+            color: var(--error);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        input.error~.error-message {
+            display: block;
+        }
+
+        /* Radio buttons customizados */
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .radio-option {
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .radio-option input[type="radio"]:checked+.radio-label {
+            background: rgba(37, 211, 102, 0.15);
+            border-color: var(--whatsapp-green);
+            color: var(--whatsapp-green);
+        }
+
+        .radio-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Select customizado */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%238696A0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--whatsapp-dark);
+            color: var(--text-primary);
+            padding: 12px;
+        }
+
+        /* Campos condicionais */
+        .conditional-field {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(-10px);
+        }
+
+        .conditional-field.active {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 16px;
+        }
+
+        /* Botão enviar - estilo WhatsApp */
+        .submit-btn {
+            width: 100%;
+            background: var(--whatsapp-green);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 32px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Navegação secundária */
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover {
+            color: var(--whatsapp-green);
+        }
+
+        /* Trust badge */
+        .trust-badge {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Botão flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: var(--whatsapp-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        /* Responsividade tablet+ */
+        @media (min-width: 768px) {
+            .container {
+                margin-top: 48px;
+            }
+
+            .form-bubble {
+                padding: 32px 28px;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--whatsapp-green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-left">
-            <img src="../../assets/st-icone.png" alt="ST Motors" class="logo-img">
+            <img src="st-icone.png" alt="ST Motors" class="logo-img">
         </div>
         <div class="header-right">
             <div class="simulacao-label">Simulação</div>
@@ -55,7 +493,7 @@
             <form id="financingForm" novalidate>
                 <!-- Nome -->
                 <div class="input-group">
-                    <label class="input-label" for="name">Nome</label>
+                    <label class="input-label" for="name">Nome completo</label>
                     <div class="input-wrapper">
                         <input type="text" id="name" name="name" placeholder="Ex: João Silva Santos" required
                             pattern="[A-Za-zÀ-ÿ\s]{3,}">
@@ -65,30 +503,27 @@
                     <span class="error-message">Por favor, insira seu nome completo</span>
                 </div>
 
+                <!-- CPF -->
+                <div class="input-group">
+                    <label class="input-label" for="cpf">CPF</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required maxlength="14"
+                            inputmode="numeric">
+                        <span class="input-icon">&#x1F4C4;</span>
+                        <span class="validation-icon">✓</span>
+                    </div>
+                    <span class="error-message">CPF inválido</span>
+                </div>
+
                 <!-- Telefone -->
                 <div class="input-group">
                     <label class="input-label" for="phone">Telefone</label>
                     <div class="input-wrapper">
-                        <input type="tel" id="phone" name="phone" placeholder="Ex: (16) 99999-9999" required>
+                        <input type="tel" id="phone" name="phone" placeholder="(16) 99999-9999" required>
                         <span class="input-icon">&#x1F4F1;</span>
                         <span class="validation-icon">✓</span>
                     </div>
                     <span class="error-message">Telefone inválido</span>
-                </div>
-
-                <!-- Repetir telefone -->
-                <div class="input-group">
-                    <label class="input-label" for="phoneConfirm">Repetir telefone</label>
-                    <div class="input-wrapper">
-                        <input type="tel" id="phoneConfirm" name="phoneConfirm" placeholder="Confirme seu telefone"
-                            required>
-                        <span class="input-icon">&#x1F4F1;</span>
-                        <span class="validation-icon">✓</span>
-                    </div>
-                    <span class="error-message">Os telefones não coincidem</span>
-                    <div class="phone-mismatch-warning" id="phoneMismatchWarning">
-                        &#x26A0;&#xFE0F; Os números de telefone não são iguais. Por favor, verifique.
-                    </div>
                 </div>
 
                 <!-- Data de nascimento -->
@@ -216,7 +651,403 @@
         <div class="spinner"></div>
     </div>
 
-    <script src="script-simulacao.js"></script>
+    <script>
+        // ==========================================
+        // MÁSCARAS E VALIDAÇÕES
+        // ==========================================
+        const form = document.getElementById('financingForm');
+        const cpfInput = document.getElementById('cpf');
+        const phoneInput = document.getElementById('phone');
+        const birthdateInput = document.getElementById('birthdate');
+        const valorEntradaField = document.getElementById('valorEntradaField');
+        const entradaYes = document.getElementById('entradaYes');
+        const entradaNo = document.getElementById('entradaNo');
+        const valorEntradaInput = document.getElementById('valorEntrada');
+        const rendaInput = document.getElementById('renda');
+
+        // ==========================================
+        // MÁSCARA CPF
+        // ==========================================
+        function cpfMask(value) {
+            return value
+                .replace(/\D/g, '')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        }
+
+        // Validação de CPF
+        function validateCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+
+            if (cpf.length !== 11) return false;
+            if (/^(\d)\1{10}$/.test(cpf)) return false; // Rejeita CPFs com todos os dígitos iguais
+
+            let sum = 0;
+            let remainder;
+
+            // Valida primeiro dígito verificador
+            for (let i = 1; i <= 9; i++) {
+                sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf.substring(9, 10))) return false;
+
+            // Valida segundo dígito verificador
+            sum = 0;
+            for (let i = 1; i <= 10; i++) {
+                sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf.substring(10, 11))) return false;
+
+            return true;
+        }
+
+        cpfInput.addEventListener('input', (e) => {
+            e.target.value = cpfMask(e.target.value);
+
+            // Valida quando tiver 14 caracteres (formato completo)
+            if (e.target.value.length === 14) {
+                if (validateCPF(e.target.value)) {
+                    e.target.classList.remove('error');
+                } else {
+                    e.target.classList.add('error');
+                }
+            }
+        });
+
+        cpfInput.addEventListener('blur', (e) => {
+            if (e.target.value.length === 14) {
+                if (!validateCPF(e.target.value)) {
+                    e.target.classList.add('error');
+                }
+            } else if (e.target.value.length > 0) {
+                e.target.classList.add('error');
+            }
+        });
+
+        // ==========================================
+        // MÁSCARA TELEFONE
+        // ==========================================
+        function phoneMask(value) {
+            return value
+                .replace(/\D/g, '')
+                .replace(/^(\d{2})(\d)/g, '($1) $2')
+                .replace(/(\d{5})(\d)/, '$1-$2')
+                .replace(/(-\d{4})\d+?$/, '$1');
+        }
+
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = phoneMask(e.target.value);
+        });
+
+        // ==========================================
+        // MÁSCARA DATA DE NASCIMENTO
+        // ==========================================
+        function dateMask(value) {
+            return value
+                .replace(/\D/g, '')
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .replace(/(\d{2})(\d)/, '$1/$2')
+                .replace(/(\d{4})\d+?$/, '$1');
+        }
+
+        function validateAge(dateString) {
+            const parts = dateString.split('/');
+            if (parts.length !== 3) return false;
+
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10);
+            const year = parseInt(parts[2], 10);
+
+            // Valida dia, mês e ano
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1920 || year > 2010) {
+                return false;
+            }
+
+            // Cria data
+            const birthDate = new Date(year, month - 1, day);
+            const today = new Date();
+
+            // Calcula idade
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return age >= 18;
+        }
+
+        birthdateInput.addEventListener('input', (e) => {
+            e.target.value = dateMask(e.target.value);
+
+            // Valida quando tiver formato completo
+            if (e.target.value.length === 10) {
+                if (validateAge(e.target.value)) {
+                    e.target.classList.remove('error');
+                } else {
+                    e.target.classList.add('error');
+                }
+            }
+        });
+
+        birthdateInput.addEventListener('blur', (e) => {
+            if (e.target.value.length === 10) {
+                if (!validateAge(e.target.value)) {
+                    e.target.classList.add('error');
+                }
+            } else if (e.target.value.length > 0) {
+                e.target.classList.add('error');
+            }
+        });
+
+        // ==========================================
+        // MÁSCARA MOEDA
+        // ==========================================
+        function moneyMask(value) {
+            value = value.replace(/\D/g, '');
+            if (value === '') return '';
+            value = (parseInt(value) / 100).toFixed(2);
+            value = value.replace('.', ',');
+            value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+            return 'R$ ' + value;
+        }
+
+        valorEntradaInput.addEventListener('input', (e) => {
+            e.target.value = moneyMask(e.target.value);
+        });
+
+        rendaInput.addEventListener('input', (e) => {
+            e.target.value = moneyMask(e.target.value);
+        });
+
+        // ==========================================
+        // PROGRESSIVE DISCLOSURE - CAMPO ENTRADA
+        // ==========================================
+        entradaYes.addEventListener('change', () => {
+            valorEntradaField.classList.add('active');
+            valorEntradaInput.required = true;
+        });
+
+        entradaNo.addEventListener('change', () => {
+            valorEntradaField.classList.remove('active');
+            valorEntradaInput.required = false;
+            valorEntradaInput.value = '';
+        });
+
+        // ==========================================
+        // LISTA DE MOTOS (alimenta ambos selects)
+        // ==========================================
+        const motosDisponiveis = [
+    '▪ ADV 150 ABS - 2023 - Vermelha - R$ 23.870',
+    '▪ ADV 150 ABS - 2024 - Verde - R$ 24.870',
+    '▪ ADV 160 ABS - 2026 - Prata - R$ 28.870',
+    '▪ BIZ 100 - 2002 - Verde - R$ 6.870',
+    '▪ BIZ 110i - 2023 - Prata - R$ 14.870',
+    '▪ BIZ 125 - 2021 - Prata - R$ 15.870',
+    '▪ BIZ 125 - 2017 - Azul - R$ 13.870',
+    '▪ BIZ 125 ES - 2014 - Preta - R$ 12.870',
+    '▪ BIZ 125 ES - 2013 - Preta - R$ 12.870',
+    '▪ BIZ 125 ES - 2013 - Vermelha - R$ 12.870',
+    '▪ BIZ 125 EX - 2014 - Branca - R$ 13.570',
+    '▪ BMW F800 R - 2012 - Cinza - R$ 26.870',
+    '▪ BMW G310 GS - 2023 - Preta - R$ 34.870',
+    '▪ BROS 125 ES - 2014 - Vermelha - R$ 11.870',
+    '▪ BROS 150 ES - 2013 - Vermelha - R$ 13.570',
+    '▪ BROS 160 ESDD - 2023 - Vermelha - R$ 21.870',
+    '▪ BROS 160 ESDD - 2022 - Preta - R$ 20.870',
+    '▪ BROS 160 ESDD - 2019 - Branca - R$ 17.870',
+    '▪ BROS 160 ESDD - 2022 - Vermelha - R$ 19.870',
+    '▪ CG 150 TITAN ES - 2006 - Prata - R$ 10.870',
+    '▪ CG 150 TITAN ES - 2007 - Preta - R$ 10.870',
+    '▪ CG 150 TITAN EX - 2010 - Cinza - R$ 11.570',
+    '▪ CG 160 START - 2017 - Vermelha - R$ 14.870',
+    '▪ CG 160 TITAN - 2023 - Prata - R$ 20.570',
+    '▪ CG 160 TITAN - 2022 - Vermelha - R$ 19.870',
+    '▪ CG 160 TITAN - 2022 - Amarela - R$ 19.870',
+    '▪ CG TITAN 125 KS - 2003 - Vermelha - R$ 7.870',
+    '▪ CROOSER 150 S - 2022 - Branca - R$ 18.870',
+    '▪ CROSSER 150 - 2015 - Cinza - R$ 14.870',
+    '▪ CROSSER 150 ED - 2015 - Cinza - R$ 14.870',
+    '▪ CROSSER 150 ED - 2017 - Cinza - R$ 15.870',
+    '▪ CROSSER 150 S - 2023 - Azul - R$ 19.570',
+    '▪ ELITE 125 - 2025 - Branca - R$ 15.570',
+    '▪ ELITE 125 - 2026 - Branca - R$ 15.870',
+    '▪ ELITE 125 - 2019 - Vermelha - R$ 11.870',
+    '▪ FACTOR 125 ED - 2012 - Preta - R$ 9.870',
+    '▪ FACTOR 125 ED - 2020 - Preta - R$ 13.870',
+    '▪ FACTOR 125 ED - 2012 - Vermelha - R$ 9.870',
+    '▪ FACTOR 150 ED - 2021 - Preta - R$ 15.870',
+    '▪ FACTOR 150 ED - 2018 - Preta - R$ 14.570',
+    '▪ FAZER 150 - 2025 - Preta - R$ 18.570',
+    '▪ FAZER 150 ED - 2022 - Azul - R$ 16.870',
+    '▪ FAZER 150 ED - 2014 - Preta - R$ 12.570',
+    '▪ FAZER 150 ED - 2014 - Preta - R$ 12.870',
+    '▪ FAZER 150 SED - 2022 - Preta - R$ 16.870',
+    '▪ FAZER 250 - 2013 - Vermelha - R$ 15.870',
+    '▪ FAZER 250 - 2011 - Preta - R$ 13.870',
+    '▪ FAZER 250 - 2012 - Roxa - R$ 14.870',
+    '▪ FAZER 250 ABS - 2020 - Vermelha - R$ 20.870',
+    '▪ LANDER 250 - 2024 - Bege - R$ 27.870',
+    '▪ MT 07 ABS - 2025 - Azul - R$ 50.870',
+    '▪ MT 09 - 2016 - Laranja - R$ 44.870',
+    '▪ NC 750X ABS - 2025 - Vermelha - R$ 57.870',
+    '▪ NMAX 160 ABS - 2023 - Verde - R$ 21.870',
+    '▪ PCX 150 - 2015 - Preta - R$ 14.870',
+    '▪ PCX 160 ABS - 2024 - Branca - R$ 20.870',
+    '▪ POP 110i - 2021 - Preta - R$ 10.870',
+    '▪ POP 110i - 2021 - Branca - R$ 10.870',
+    '▪ SHADOW 750 - 2006 - Vermelha - R$ 31.870',
+    '▪ TWISTER 250 - 2008 - Vermelha - R$ 11.870',
+    '▪ TWISTER 250 - 2016 - Vermelha - R$ 18.870',
+    '▪ TWISTER 250F - 2017 - Vermelha - R$ 18.870',
+    '▪ TWISTER 300F - 2025 - Vermelha - R$ 28.870',
+    '▪ TWISTER 300F - 2025 - Azul - R$ 27.870',
+    '▪ XMAX 250 ABS - 2022 - Preta - R$ 27.870',
+    '▪ XMAX 250 ABS - 2023 - Azul - R$ 30.870',
+    '▪ XRE 300 ABS - 2022 - Cinza - R$ 28.870',
+    '▪ XT 660 R - 2008 - Preta - R$ 34.870',
+    '▪ Z 1000 - 2012 - Preta - R$ 42.870',
+    '▪ Z 400 ABS - 2023 - Verde - R$ 30.870',
+    '▪ Z800 - 2014 - Verde - R$ 39.870',
+    '▪ ZX-10R - 2013 - Branca - R$ 47.870',
+];
+
+        // Popular os selects dinamicamente
+        function popularSelects() {
+            const moto1Select = document.getElementById('moto1');
+            const moto2Select = document.getElementById('moto2');
+
+            motosDisponiveis.forEach(moto => {
+                // Criar value limpo (sem espaços e caracteres especiais)
+                const value = moto.toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z0-9-]/g, '');
+
+                // Criar option para moto 1
+                const option1 = document.createElement('option');
+                option1.value = value;
+                option1.textContent = moto;
+                moto1Select.appendChild(option1);
+
+                // Criar option para moto 2
+                const option2 = document.createElement('option');
+                option2.value = value;
+                option2.textContent = moto;
+                moto2Select.appendChild(option2);
+            });
+        }
+
+        // Executar ao carregar a página
+        popularSelects();
+
+        // ==========================================
+        // SUBMIT FORM
+        // ==========================================
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validação geral do formulário
+            if (!form.checkValidity()) {
+                const inputs = form.querySelectorAll('input[required], select[required]');
+                inputs.forEach(input => {
+                    if (!input.validity.valid) {
+                        input.classList.add('error');
+                    }
+                });
+                return;
+            }
+
+            // Validação específica do CPF
+            const cpfValue = cpfInput.value;
+            if (cpfValue.length !== 14 || !validateCPF(cpfValue)) {
+                cpfInput.classList.add('error');
+                cpfInput.focus();
+                return;
+            }
+
+            // Validação específica da data de nascimento
+            const birthdateValue = birthdateInput.value;
+            if (birthdateValue.length !== 10 || !validateAge(birthdateValue)) {
+                birthdateInput.classList.add('error');
+                birthdateInput.focus();
+                return;
+            }
+
+            // Coleta dados
+            const moto1Select = document.getElementById('moto1');
+            const moto2Select = document.getElementById('moto2');
+            const moto1Text = moto1Select.value ? moto1Select.selectedOptions[0].text : 'Não selecionada';
+            const moto2Text = moto2Select.value ? moto2Select.selectedOptions[0].text : 'Não selecionada';
+
+            const formData = {
+                nome: document.getElementById('name').value,
+                cpf: cpfInput.value,
+                telefone: phoneInput.value,
+                dataNascimento: birthdateInput.value,
+                cnh: document.querySelector('input[name="cnh"]:checked').value,
+                entrada: document.querySelector('input[name="entrada"]:checked').value,
+                valorEntrada: valorEntradaInput.value || 'Não informado',
+                renda: rendaInput.value,
+                moto1: moto1Text,
+                moto2: moto2Text
+            };
+
+            // Monta mensagem WhatsApp
+            const mensagem = `Olá, eu gostaria de fazer uma simulação. Meus dados são:
+
+*Nome:* ${formData.nome}
+*CPF:* ${formData.cpf}
+*Telefone:* ${formData.telefone}
+*Data Nascimento:* ${formData.dataNascimento}
+*CNH:* ${formData.cnh}
+*Entrada:* ${formData.entrada}
+${formData.entrada === 'sim' ? `*Valor Entrada:* ${formData.valorEntrada}` : ''}
+*Renda:* ${formData.renda}
+*Moto (1ª opção):* ${formData.moto1}
+*Moto (2ª opção):* ${formData.moto2}
+
+Aguardo retorno para prosseguir com a simulação!`;
+
+            // Encode para URL
+            const mensagemEncoded = encodeURIComponent(mensagem);
+
+            // Número do WhatsApp
+            const numeroWhatsApp = '5516997305602'; // Substituir pelo número real
+            const whatsappURL = `https://wa.me/${numeroWhatsApp}?text=${mensagemEncoded}`;
+
+            // Mostra loading
+            document.getElementById('loading').classList.add('active');
+
+            // Simula salvamento no banco (substituir por API real)
+            setTimeout(() => {
+                // Aqui entraria a chamada à API:
+                // await fetch('/api/financiamento', { method: 'POST', body: JSON.stringify(formData) });
+
+                // Remove loading
+                document.getElementById('loading').classList.remove('active');
+
+                // Opcional: limpar formulário
+                // form.reset();
+            }, 1500);
+
+            // Abre WhatsApp imediatamente (compatível com iPhone e Android)
+            window.location.href = whatsappURL;
+        });
+
+        // Remove erro ao digitar
+        const inputs = form.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                input.classList.remove('error');
+            });
+        });
+    </script>
 </body>
 
 </html>
