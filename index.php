@@ -1,7 +1,19 @@
 <?php
 define('APP_LOADED', true);
 require_once __DIR__ . '/includes/security.php';
+
+require_once __DIR__ . '/includes/db.php';
+   $avaliacoes = [];
+   try {
+       $db = getDB();
+       $avaliacoes = $db->query(
+           'SELECT * FROM avaliacoes WHERE ativo = 1 ORDER BY ordem ASC, criado_em DESC'
+       )->fetchAll();
+   } catch (PDOException $e) {
+       $avaliacoes = [];
+   }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -53,9 +65,9 @@ require_once __DIR__ . '/includes/security.php';
   <link rel="preload" href="assets/styles/home-styles.css" as="style">
   <link rel="preload" as="image" href="assets/images/home/hero-bg.jpg" fetchpriority="high">
   <link rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
-      as="style"
-      crossorigin="anonymous">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap"
+    as="style"
+    crossorigin="anonymous">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -67,84 +79,83 @@ require_once __DIR__ . '/includes/security.php';
 
   <!-- Schema.org - Local Business -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MotorcycleDealer",
-  "name": "ST Motors",
-  "description": "Loja especializada em motos usadas, seminovas e novas em Araraquara-SP. Procedência garantida, financiamento facilitado e atendimento personalizado.",
-  "image": [
-    "https://stmotorsara.com.br/assets/images/st-og.jpg",
-    "https://stmotorsara.com.br/assets/images/logo-header.svg"
-  ],
-  "url": "https://stmotorsara.com.br",
-  "telephone": "+551630147386",
-  "priceRange": "R$ 5.000 - R$ 50.000",
-  "paymentAccepted": "Dinheiro, Cartão de Crédito, Cartão de Débito, Financiamento",
-  "currenciesAccepted": "BRL",
-  "contactPoint": {
-  "@type": "ContactPoint",
-  "telephone": "+5516997305602",
-  "contactType": "sales",
-  "areaServed": "BR",
-  "availableLanguage": ["Portuguese"]
-},
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "R. Maurício Galli, 47",
-    "addressLocality": "Araraquara",
-    "addressRegion": "SP",
-    "postalCode": "14806-155",
-    "addressCountry": "BR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -21.767900187638183,
-    "longitude": -48.164309978264384
-  },
-  "openingHoursSpecification": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
+      "@context": "https://schema.org",
+      "@type": "MotorcycleDealer",
+      "name": "ST Motors",
+      "description": "Loja especializada em motos usadas, seminovas e novas em Araraquara-SP. Procedência garantida, financiamento facilitado e atendimento personalizado.",
+      "image": [
+        "https://stmotorsara.com.br/assets/images/st-og.jpg",
+        "https://stmotorsara.com.br/assets/images/logo-header.svg"
       ],
-      "opens": "08:30",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:30",
-      "closes": "13:00"
+      "url": "https://stmotorsara.com.br",
+      "telephone": "+551630147386",
+      "priceRange": "R$ 5.000 - R$ 50.000",
+      "paymentAccepted": "Dinheiro, Cartão de Crédito, Cartão de Débito, Financiamento",
+      "currenciesAccepted": "BRL",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+5516997305602",
+        "contactType": "sales",
+        "areaServed": "BR",
+        "availableLanguage": ["Portuguese"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Maurício Galli, 47",
+        "addressLocality": "Araraquara",
+        "addressRegion": "SP",
+        "postalCode": "14806-155",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -21.767900187638183,
+        "longitude": -48.164309978264384
+      },
+      "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "13:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/stmotors_ara/",
+        "https://www.facebook.com/St.Motors.Araraquara"
+      ]
     }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/stmotors_ara/",
-    "https://www.facebook.com/St.Motors.Araraquara"
-  ]
-}
-</script>
+  </script>
 
   <!-- Schema.org - WebSite with SearchAction -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "ST Motors Araraquara",
-  "url": "https://stmotorsara.com.br",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://stmotorsara.com.br/estoque?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ST Motors Araraquara",
+      "url": "https://stmotorsara.com.br",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://stmotorsara.com.br/estoque?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -383,15 +394,15 @@ require_once __DIR__ . '/includes/security.php';
                 <div class="bike-card__specs">
                   <span class="bike-card__spec">
                     <svg xmlns="http://www.w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Cabeça do pistão -->
-  <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
-  <!-- Ranhuras (anéis) -->
-  <path d="M5 7h14" />
-  <path d="M5 10h14" />
-  <!-- Biela (braço de conexão) -->
-  <path d="M12 14v4" />
-  <circle cx="12" cy="20" r="2" />
-</svg>
+                      <!-- Cabeça do pistão -->
+                      <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                      <!-- Ranhuras (anéis) -->
+                      <path d="M5 7h14" />
+                      <path d="M5 10h14" />
+                      <!-- Biela (braço de conexão) -->
+                      <path d="M12 14v4" />
+                      <circle cx="12" cy="20" r="2" />
+                    </svg>
                     471cc
                   </span>
                   <span class="bike-card__spec">
@@ -435,15 +446,15 @@ require_once __DIR__ . '/includes/security.php';
                 <div class="bike-card__specs">
                   <span class="bike-card__spec">
                     <svg xmlns="http://www.w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Cabeça do pistão -->
-  <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
-  <!-- Ranhuras (anéis) -->
-  <path d="M5 7h14" />
-  <path d="M5 10h14" />
-  <!-- Biela (braço de conexão) -->
-  <path d="M12 14v4" />
-  <circle cx="12" cy="20" r="2" />
-</svg>
+                      <!-- Cabeça do pistão -->
+                      <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                      <!-- Ranhuras (anéis) -->
+                      <path d="M5 7h14" />
+                      <path d="M5 10h14" />
+                      <!-- Biela (braço de conexão) -->
+                      <path d="M12 14v4" />
+                      <circle cx="12" cy="20" r="2" />
+                    </svg>
                     471cc
                   </span>
                   <span class="bike-card__spec">
@@ -487,15 +498,15 @@ require_once __DIR__ . '/includes/security.php';
                 <div class="bike-card__specs">
                   <span class="bike-card__spec">
                     <svg xmlns="http://www.w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Cabeça do pistão -->
-  <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
-  <!-- Ranhuras (anéis) -->
-  <path d="M5 7h14" />
-  <path d="M5 10h14" />
-  <!-- Biela (braço de conexão) -->
-  <path d="M12 14v4" />
-  <circle cx="12" cy="20" r="2" />
-</svg>
+                      <!-- Cabeça do pistão -->
+                      <path d="M7 3h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                      <!-- Ranhuras (anéis) -->
+                      <path d="M5 7h14" />
+                      <path d="M5 10h14" />
+                      <!-- Biela (braço de conexão) -->
+                      <path d="M12 14v4" />
+                      <circle cx="12" cy="20" r="2" />
+                    </svg>
                     471cc
                   </span>
                   <span class="bike-card__spec">
@@ -554,6 +565,9 @@ require_once __DIR__ . '/includes/security.php';
     <!-- ================================
      TESTIMONIALS SECTION (Social Proof Slider)
      ================================ -->
+    <!-- ================================
+     TESTIMONIALS SECTION (Social Proof Slider)
+     ================================ -->
     <section class="testimonials" aria-labelledby="testimonials-title">
       <div class="testimonials__container">
 
@@ -562,9 +576,11 @@ require_once __DIR__ . '/includes/security.php';
           <h2 class="testimonials__title">Avaliações</h2>
           <h2 id="testimonials-title-st" class="testimonials__title">ST Motors</h2>
           <img src="assets/images/home/google-img.png" id="img-google"
-            alt="imagem das estrelas e do logo-texto de avaliações google">
+            alt="Avaliações 5 estrelas ST Motors no Google">
           <p class="testimonials__subtitle">Avaliações reais de clientes que conquistaram sua moto com a ST Motors</p>
         </header>
+
+        <?php if (!empty($avaliacoes)): ?>
 
         <!-- Slider Wrapper -->
         <div class="testimonials__slider-wrapper">
@@ -573,99 +589,46 @@ require_once __DIR__ . '/includes/security.php';
           <div class="testimonials__slider" id="testimonials-slider" role="region"
             aria-label="Carrossel de depoimentos">
 
-            <!-- Card 1 -->
+            <?php foreach ($avaliacoes as $av): ?>
             <article class="testimonial-card">
-              <div class="testimonial-card__image-wrapper">
-                <img src="assets/images/avaliacoes"
-                  alt="Avaliação 5 estrelas no Google - Cliente satisfeito com atendimento e qualidade da moto"
-                  class="testimonial-card__image" loading="lazy" width="600" height="400">
-              </div>
-              <div class="testimonial-card__content">
-                <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                </div>
-                <blockquote class="testimonial-card__text">
-                  <p>Excelente atendimento! Comprei minha CG 160 e o pessoal foi muito atencioso desde o primeiro
-                    contato. A moto estava impecável, procedência garantida e o financiamento saiu super rápido.
-                    Recomendo demais!</p>
-                </blockquote>
-                <footer class="testimonial-card__author">
-                  <span class="testimonial-card__author-name">João Silva</span>
-                  <span class="testimonial-card__source">Google Reviews</span>
-                </footer>
-              </div>
-            </article>
 
-            <!-- Card 2 -->
-            <article class="testimonial-card">
+              <?php if (!empty($av['foto'])): ?>
               <div class="testimonial-card__image-wrapper">
-                <img src="assets/images/avaliacoes"
-                  alt="Avaliação 5 estrelas no Google - Cliente elogia procedência e transparência da loja"
-                  class="testimonial-card__image" loading="lazy" width="600" height="400">
+                <img
+                  src="<?= htmlspecialchars($av['foto'], ENT_QUOTES, 'UTF-8') ?>"
+                  alt="Foto de <?= htmlspecialchars($av['nome'], ENT_QUOTES, 'UTF-8') ?>"
+                  class="testimonial-card__image"
+                  loading="lazy"
+                  width="600"
+                  height="400">
               </div>
+              <?php else: ?>
+              <div class="testimonial-card__image-wrapper testimonial-card__image-wrapper--avatar">
+                <div class="testimonial-card__avatar" aria-hidden="true">
+                  <?= mb_strtoupper(mb_substr(htmlspecialchars($av['nome'], ENT_QUOTES, 'UTF-8'), 0, 1)) ?>
+                </div>
+              </div>
+              <?php endif; ?>
+
               <div class="testimonial-card__content">
                 <div class="testimonial-card__rating" aria-label="Avaliação: 5 de 5 estrelas">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  <?php for ($i = 0; $i < 5; $i++): ?>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path
-                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
+                  <?php endfor; ?>
                 </div>
                 <blockquote class="testimonial-card__text">
-                  <p>Melhor experiência que já tive comprando moto usada. Tudo muito transparente, sem enrolação.
-                    Comprei uma Fazer 250 seminova que parecia zero km. Preço justo e equipe super profissional.
-                    Voltarei com certeza!</p>
+                  <p><?= htmlspecialchars($av['texto'], ENT_QUOTES, 'UTF-8') ?></p>
                 </blockquote>
                 <footer class="testimonial-card__author">
-                  <span class="testimonial-card__author-name">Maria Santos</span>
+                  <span class="testimonial-card__author-name"><?= htmlspecialchars($av['nome'], ENT_QUOTES, 'UTF-8') ?></span>
                   <span class="testimonial-card__source">Google Reviews</span>
                 </footer>
               </div>
+
             </article>
+            <?php endforeach; ?>
 
           </div>
 
@@ -692,20 +655,22 @@ require_once __DIR__ . '/includes/security.php';
         <div class="testimonials__dots" id="testimonials-dots" role="tablist" aria-label="Navegação de depoimentos">
         </div>
 
-      </div><!-- /testimonials__container -->
+        <?php else: ?>
+          <!-- Nenhuma avaliação cadastrada ainda -->
+        <?php endif; ?>
 
-      <!-- CTA de Avaliação (Clean & Simple) -->
+      </div>
+
+      <!-- CTA de Avaliação -->
       <div class="testimonials__review-cta">
-
-        <a href="https://www.google.com/search?sca_esv=115b03ba0a724772&sxsrf=ANbL-n4wfM3aG9kGpypdeVizF2-hBK9gxg:1771303882663&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOUO8VjqmEBoBKNXBuW6QGfImwIwOVv-p25voj4U3R28V2cQfzDgPTON-d2BFxH889v22sFMzWNwFOnZsJ-bPOxKLhk6-&q=ST+Motors+Coment%C3%A1rios&sa=X&ved=2ahUKEwiwqtyV3d-SAxXerpUCHR2WLukQ0bkNegQIHhAH&biw=1366&bih=607&dpr=1"
+        <a href="https://www.google.com/search?q=ST+Motors+Coment%C3%A1rios"
           target="_blank" rel="noopener noreferrer" class="testimonials__review-link" aria-label="Avaliar no Google →">
           Avaliar no Google →
         </a>
         <p class="testimonials__review-text">
           Avalie o atendimento e ajude a gente a evoluir
         </p>
-
-      </div><!-- /testimonials__review-cta -->
+      </div>
 
     </section>
     <!-- ================================
@@ -763,7 +728,7 @@ require_once __DIR__ . '/includes/security.php';
   <!-- ================================
      Footer and Whats - php
      ================================ -->
-     
+
   <?php include __DIR__ . '/includes/footer-whats.php'; ?>
 
   <!-- ================================

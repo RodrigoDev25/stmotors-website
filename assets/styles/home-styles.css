@@ -2432,3 +2432,24 @@ textarea:focus-visible {
     page-break-inside: avoid;
   }
 }
+
+/* Avatar quando não há foto */
+.testimonial-card__image-wrapper--avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+}
+
+.testimonial-card__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+}

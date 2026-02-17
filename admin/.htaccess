@@ -1,0 +1,9 @@
+# Bloqueia listagem de diretório
+Options -Indexes
+
+# Protege arquivos sensíveis de acesso direto
+<FilesMatch "\.(php)$">
+  <RequireAll>
+    Require all granted
+  </RequireAll>
+</FilesMatch>
