@@ -1,61 +1,11 @@
 /* ================================
    FINANCIAMENTO ST MOTORS
-   Glassmorphism Minimalista
+   Design: Cinza Escuro + Branco
    ================================ */
 
 /* ================================
-   VARIÁVEIS & RESET
+   RESET & BASE
    ================================ */
-:root {
-  /* Cores ST Motors */
-  --color-primary: #4f9e21;
-  --color-primary-hover: #68a744;
-  --color-primary-light: #8BC96A;
-  
-  --color-bg-light: #FAFAF8;
-  --color-bg-white: #FFFFFF;
-  --color-bg-dark: #0F0F0F;
-  
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #6B6B6B;
-  --color-text-light: #FAFAF8;
-  
-  --color-border-light: #E5E5E5;
-  
-  /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
-  
-  /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  
-  /* Transitions */
-  --transition-speed: 0.3s;
-  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Header & Z-index (para compatibilidade com página principal) */
-  --header-height: 72px;
-  --header-height-mobile: 64px;
-  --z-header: 1000;
-  --z-mobile-menu: 999;
-  --z-overlay: 998;
-}
-
 *,
 *::before,
 *::after {
@@ -64,41 +14,130 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+:root {
+  /* ===========================
+     PALETA DE CORES - ST MOTORS
+     =========================== */
+
+  /* Identidade da Marca */
+  --color-primary: #4f9e21;
+  --color-primary-hover: #68a744;
+  --color-primary-dark: #3a6126;
+  --color-primary-light: #8BC96A;
+
+  /* Backgrounds */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #FAFAF8;
+  --color-bg-dark: #0F0F0F;
+  --color-bg-dark-secondary: #1A1A1A;
+
+  /* Textos */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-tertiary: #999999;
+  --color-text-light: #FAFAF8;
+
+  /* Bordas */
+  --color-border-light: #E5E5E5;
+  --color-border-medium: #CCCCCC;
+  --color-border-dark: #2A2A2A;
+
+  /* Social Media Colors */
+  --color-whatsapp: #25D366;
+  --color-facebook: #1877F2;
+  --color-instagram: #c71fa3;
+  --color-google-maps: #EA4335;
+  --color-google: #4285F4;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Layout */
+  --header-height: 72px;
+  --header-height-mobile: 64px;
+  --max-width-container: 1280px;
+  --max-width-search: 680px;
+  --transition-speed: 0.3s;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-index Scale */
+  --z-cookie-consent: 10001;
+  --z-header: 1000;
+  --z-overlay: 998;
+  --z-mobile-menu: 999;
+  --z-location-badge: 100;
+  --z-skip-link: 10000;
+}
+
+/* ===========================
+   HTML & BODY
+   =========================== */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-family: var(--font-family);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: 1.6;
-  color: var(--color-text-primary);
-  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  color: var(--color-text-light);
+  overflow-x: hidden;
   min-height: 100vh;
+  /* Background: Cinza Escuro Gradiente */
+  background: linear-gradient(135deg, 
+    var(--color-bg-dark-secondary) 0%, 
+    var(--color-bg-dark) 50%, 
+    var(--color-bg-dark-secondary) 100%);
+  background-attachment: fixed;
 }
 
-/* ================================
-   UTILITY CLASSES
-   ================================ */
 .skip-link {
   position: absolute;
   top: -100px;
   left: 0;
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg-primary);
   padding: var(--spacing-sm) var(--spacing-md);
   text-decoration: none;
-  z-index: 10000;
-  transition: top var(--transition-speed);
+  font-weight: var(--font-weight-semibold);
+  z-index: var(--z-skip-link);
+  transition: top var(--transition-speed) var(--transition-ease);
+  border-radius: 0 0 8px 0;
 }
 
-.skip-link:focus {
-  top: 0;
-}
-
+/* ================================
+   UTILITY CLASSES
+   ================================ */
 .hide-mobile {
   display: none;
 }
@@ -107,16 +146,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(26, 26, 26, 0.05);
-  border: 2px dashed rgba(26, 26, 26, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   min-height: 300px;
   text-align: center;
 }
 
 .image-placeholder__text {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  color: rgba(250, 250, 248, 0.6);
   line-height: 1.8;
 }
 
@@ -124,7 +163,7 @@ body {
    MAIN CONTAINER
    ================================ */
 .financing-page {
-  max-width: 1280px;
+  max-width: var(--max-width-container);
   margin: 0 auto;
   padding: calc(var(--header-height-mobile) + var(--spacing-lg)) var(--spacing-sm) var(--spacing-lg);
 }
@@ -138,7 +177,7 @@ body {
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   margin-bottom: var(--spacing-xs);
 }
 
@@ -146,21 +185,21 @@ body {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: var(--font-weight-bold);
   line-height: 1.2;
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-md);
 }
 
 .section-intro {
   font-size: clamp(1rem, 2.5vw, 1.125rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: rgba(250, 250, 248, 0.75);
   max-width: 700px;
   margin: 0 auto var(--spacing-lg) auto;
   text-align: center;
 }
 
 /* ================================
-   HERO FINANCING SECTION
+   HERO FINANCING SECTION - CINZA ESCURO
    ================================ */
 .hero-financing {
   padding: var(--spacing-2xl) 0;
@@ -177,16 +216,16 @@ body {
   align-items: center;
   gap: var(--spacing-xs);
   padding: 0.5rem 1rem;
-  background: var(--glass-bg);
+  background: rgba(79, 158, 33, 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(79, 158, 33, 0.3);
   border-radius: 50px;
   font-size: 0.8125rem;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   margin-bottom: var(--spacing-md);
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .hero-financing__badge svg {
@@ -197,22 +236,23 @@ body {
 
 .hero-financing__title {
   font-size: clamp(2rem, 6vw, 3.5rem);
-  font-weight: var(--font-weight-extrabold);
+  font-weight: 800;
   line-height: 1.1;
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-sm);
 }
 
 .hero-financing__title .highlight {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   position: relative;
   display: inline-block;
+  text-shadow: 0 0 30px rgba(139, 201, 106, 0.5);
 }
 
 .hero-financing__subtitle {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   line-height: 1.5;
-  color: var(--color-text-secondary);
+  color: rgba(250, 250, 248, 0.75);
   margin-bottom: var(--spacing-lg);
   max-width: 600px;
   margin-left: auto;
@@ -232,18 +272,28 @@ body {
   align-items: center;
   gap: var(--spacing-xs);
   padding: 0.75rem 1.25rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   font-size: 0.9375rem;
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
+  transition: all var(--transition-speed) var(--transition-ease);
+}
+
+.trust-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(79, 158, 33, 0.4);
+  transform: translateY(-2px);
 }
 
 .trust-item svg {
   width: 20px;
   height: 20px;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   flex-shrink: 0;
 }
 
@@ -253,14 +303,14 @@ body {
 }
 
 /* ================================
-   SCORE SECTION
+   SCORE SECTION - FUNDO BRANCO
    ================================ */
 .score-section {
   padding: var(--spacing-3xl) 0;
-  background: white;
+  background: var(--color-bg-primary);
   border-radius: 24px;
   margin-bottom: var(--spacing-2xl);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
 .score-section__container {
@@ -274,6 +324,19 @@ body {
   margin-bottom: var(--spacing-2xl);
 }
 
+/* Textos em seções brancas */
+.score-section .section-eyebrow {
+  color: var(--color-primary);
+}
+
+.score-section .section-title {
+  color: var(--color-text-primary);
+}
+
+.score-section .section-intro {
+  color: var(--color-text-secondary);
+}
+
 .score-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -282,18 +345,16 @@ body {
 
 .score-card {
   padding: var(--spacing-lg);
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-light);
   border-radius: 16px;
-  box-shadow: var(--glass-shadow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all var(--transition-speed) var(--transition-ease);
 }
 
 .score-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px rgba(79, 158, 33, 0.15);
   border-color: var(--color-primary);
 }
 
@@ -311,6 +372,7 @@ body {
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
   border-radius: 50%;
   margin-bottom: var(--spacing-sm);
+  box-shadow: 0 4px 16px rgba(79, 158, 33, 0.25);
 }
 
 .score-card__icon svg {
@@ -359,7 +421,7 @@ body {
 }
 
 /* ================================
-   ANALYSIS SECTION
+   ANALYSIS SECTION - CINZA ESCURO
    ================================ */
 .analysis-section {
   padding: var(--spacing-3xl) 0;
@@ -384,16 +446,21 @@ body {
 
 .analysis-item {
   padding: var(--spacing-lg);
-  background: white;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all var(--transition-speed) var(--transition-ease);
 }
 
 .analysis-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(79, 158, 33, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .analysis-item__icon {
@@ -402,7 +469,7 @@ body {
   justify-content: center;
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, rgba(79, 158, 33, 0.1) 0%, rgba(79, 158, 33, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(79, 158, 33, 0.2) 0%, rgba(79, 158, 33, 0.1) 100%);
   border-radius: 50%;
   margin-bottom: var(--spacing-md);
 }
@@ -410,30 +477,31 @@ body {
 .analysis-item__icon svg {
   width: 28px;
   height: 28px;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 }
 
 .analysis-item__title {
   font-size: 1.25rem;
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-xs);
 }
 
 .analysis-item__description {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: rgba(250, 250, 248, 0.75);
 }
 
 /* ================================
-   BENEFITS SECTION
+   BENEFITS SECTION - FUNDO BRANCO
    ================================ */
 .benefits-section {
   padding: var(--spacing-3xl) 0;
-  background: white;
+  background: var(--color-bg-primary);
   border-radius: 24px;
   margin-bottom: var(--spacing-2xl);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
 .benefits-section__container {
@@ -445,6 +513,19 @@ body {
 .benefits-section__header {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
+}
+
+/* Textos em seções brancas */
+.benefits-section .section-eyebrow {
+  color: var(--color-primary);
+}
+
+.benefits-section .section-title {
+  color: var(--color-text-primary);
+}
+
+.benefits-section .section-intro {
+  color: var(--color-text-secondary);
 }
 
 .benefits-section__image-wrapper {
@@ -460,15 +541,17 @@ body {
 .benefit-card {
   position: relative;
   padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) 5rem;
-  background: var(--color-bg-light);
+  background: var(--color-bg-secondary);
   border-radius: 16px;
   border-left: 4px solid var(--color-primary);
   transition: all var(--transition-speed) var(--transition-ease);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .benefit-card:hover {
   transform: translateX(8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(79, 158, 33, 0.12);
+  background: var(--color-bg-primary);
 }
 
 .benefit-card__number {
@@ -476,9 +559,9 @@ body {
   top: var(--spacing-lg);
   left: var(--spacing-lg);
   font-size: 2.5rem;
-  font-weight: var(--font-weight-extrabold);
+  font-weight: 800;
   color: var(--color-primary);
-  opacity: 0.2;
+  opacity: 0.15;
   line-height: 1;
 }
 
@@ -496,7 +579,7 @@ body {
 }
 
 /* ================================
-   STEPS SECTION
+   STEPS SECTION - CINZA ESCURO
    ================================ */
 .steps-section {
   padding: var(--spacing-3xl) 0;
@@ -526,6 +609,7 @@ body {
   bottom: 30px;
   width: 2px;
   background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  box-shadow: 0 0 10px rgba(79, 158, 33, 0.5);
 }
 
 .step-item {
@@ -554,7 +638,9 @@ body {
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
   color: white;
-  box-shadow: 0 4px 12px rgba(79, 158, 33, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(79, 158, 33, 0.4),
+    0 0 0 4px rgba(79, 158, 33, 0.2);
 }
 
 .step-item__content {
@@ -565,18 +651,18 @@ body {
 .step-item__title {
   font-size: 1.25rem;
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-xs);
 }
 
 .step-item__description {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: rgba(250, 250, 248, 0.75);
 }
 
 /* ================================
-   SIMULATION LINK SECTION (GLASSMORPHISM)
+   SIMULATION LINK SECTION - CINZA ESCURO
    ================================ */
 .simulation-link-section {
   padding: var(--spacing-3xl) 0;
@@ -595,15 +681,15 @@ body {
   gap: var(--spacing-md);
   padding: var(--spacing-xl) var(--spacing-lg);
   background: linear-gradient(135deg, 
-    rgba(79, 158, 33, 0.08) 0%, 
-    rgba(79, 158, 33, 0.04) 100%);
+    rgba(91, 236, 6, 0.15) 0%, 
+    rgba(52, 126, 9, 0.08) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 2px solid rgba(79, 158, 33, 0.2);
+  border: 2px solid rgba(87, 207, 18, 0.3);
   border-radius: 20px;
   box-shadow: 
-    0 8px 32px rgba(79, 158, 33, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
@@ -619,7 +705,7 @@ body {
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(79, 158, 33, 0.1) 50%,
+    rgba(79, 158, 33, 0.15) 50%,
     transparent 70%
   );
   transform: translateX(-100%) translateY(-100%) rotate(45deg);
@@ -633,13 +719,13 @@ body {
 .simulation-glass-link:hover {
   transform: translateY(-6px);
   background: linear-gradient(135deg, 
-    rgba(79, 158, 33, 0.12) 0%, 
-    rgba(79, 158, 33, 0.06) 100%);
-  border-color: rgba(79, 158, 33, 0.4);
+    rgba(79, 158, 33, 0.2) 0%, 
+    rgba(79, 158, 33, 0.12) 100%);
+  border-color: rgba(79, 158, 33, 0.5);
   box-shadow: 
-    0 16px 48px rgba(79, 158, 33, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.6) inset,
-    0 0 0 4px rgba(79, 158, 33, 0.1);
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 4px rgba(79, 158, 33, 0.2);
 }
 
 .simulation-glass-link:active {
@@ -647,7 +733,7 @@ body {
 }
 
 .simulation-glass-link:focus-visible {
-  outline: 3px solid rgba(79, 158, 33, 0.5);
+  outline: 3px solid rgba(79, 158, 33, 0.6);
   outline-offset: 4px;
 }
 
@@ -661,16 +747,16 @@ body {
   background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
   border-radius: 16px;
   box-shadow: 
-    0 4px 16px rgba(79, 158, 33, 0.3),
-    0 0 0 3px rgba(79, 158, 33, 0.1);
+    0 4px 16px rgba(79, 158, 33, 0.4),
+    0 0 0 3px rgba(79, 158, 33, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .simulation-glass-link:hover .simulation-glass-link__icon {
   transform: scale(1.1) rotate(-5deg);
   box-shadow: 
-    0 8px 24px rgba(79, 158, 33, 0.4),
-    0 0 0 6px rgba(79, 158, 33, 0.15);
+    0 8px 24px rgba(79, 158, 33, 0.5),
+    0 0 0 6px rgba(79, 158, 33, 0.25);
 }
 
 .simulation-glass-link__icon svg {
@@ -688,19 +774,19 @@ body {
 .simulation-glass-link__title {
   font-size: clamp(1.125rem, 3vw, 1.375rem);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-text-light);
   margin-bottom: 0.375rem;
   transition: color 0.3s ease;
 }
 
 .simulation-glass-link:hover .simulation-glass-link__title {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 }
 
 .simulation-glass-link__description {
   font-size: clamp(0.875rem, 2vw, 0.9375rem);
   line-height: 1.5;
-  color: var(--color-text-secondary);
+  color: rgba(250, 250, 248, 0.75);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -714,7 +800,7 @@ body {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: rgba(79, 158, 33, 0.1);
+  background: rgba(79, 158, 33, 0.2);
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -727,7 +813,7 @@ body {
 .simulation-glass-link__arrow svg {
   width: 24px;
   height: 24px;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   transition: color 0.3s ease;
 }
 
@@ -736,7 +822,7 @@ body {
 }
 
 /* ================================
-   CTA FINAL SECTION
+   CTA FINAL SECTION - FUNDO BRANCO
    ================================ */
 .cta-final-section {
   padding: var(--spacing-3xl) 0;
@@ -750,13 +836,11 @@ body {
 
 .cta-glass-card {
   padding: var(--spacing-2xl) var(--spacing-lg);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--color-bg-primary);
   border-radius: 24px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cta-glass-card__content {
@@ -785,7 +869,7 @@ body {
   justify-content: center;
   gap: 0.75rem;
   padding: 1.125rem 2.5rem;
-  background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%);
+  background: linear-gradient(135deg, var(--color-whatsapp) 0%, #1ebe57 100%);
   color: white;
   font-size: 1.0625rem;
   font-weight: var(--font-weight-semibold);
@@ -849,7 +933,7 @@ body {
   gap: var(--spacing-sm);
   margin-top: var(--spacing-lg);
   padding: var(--spacing-md);
-  background: rgba(79, 158, 33, 0.05);
+  background: rgba(79, 158, 33, 0.08);
   border: 1px solid rgba(79, 158, 33, 0.2);
   border-radius: 12px;
   text-align: left;
@@ -864,7 +948,7 @@ body {
 }
 
 .simulation-info__text {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   line-height: 1.6;
   color: var(--color-text-secondary);
 }
@@ -875,144 +959,32 @@ body {
 }
 
 /* ================================
-   WHATSAPP FLUTUANTE - OVERRIDE
+   ACESSIBILIDADE GLOBAL
    ================================ */
-.whatsapp-float {
-  position: fixed !important;
-  bottom: 24px !important;
-  right: 24px !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.625rem !important;
-  padding: 1rem 1.5rem !important;
-  background: linear-gradient(135deg, #25D366 0%, #1ebe57 100%) !important;
-  color: white !important;
-  font-size: 0.9375rem !important;
-  font-weight: var(--font-weight-semibold) !important;
-  text-decoration: none !important;
-  border-radius: 50px !important;
-  box-shadow: 
-    0 8px 24px rgba(37, 211, 102, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.3) inset !important;
-  z-index: 9999 !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  min-height: 56px !important;
-  min-width: auto !important;
-  width: auto !important;
-  height: auto !important;
-  transform-origin: center !important;
-  will-change: transform, opacity !important;
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
-.whatsapp-float.hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  transform: scale(0.8) translateY(20px) !important;
-}
-
-@keyframes floatIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.whatsapp-float {
-  animation: floatIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both !important;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 
-      0 8px 24px rgba(37, 211, 102, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.3) inset;
-  }
-  50% {
-    box-shadow: 
-      0 8px 32px rgba(37, 211, 102, 0.6),
-      0 0 0 1px rgba(255, 255, 255, 0.4) inset,
-      0 0 0 8px rgba(37, 211, 102, 0.1);
-  }
-}
-
-.whatsapp-float:not(.hidden) {
-  animation: pulse 2.5s ease-in-out infinite !important;
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-4px) scale(1.05) !important;
-  box-shadow: 
-    0 12px 32px rgba(37, 211, 102, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.4) inset !important;
-  animation: none !important;
-}
-
-.whatsapp-float:active {
-  transform: translateY(-2px) scale(1.02) !important;
-}
-
-.whatsapp-float:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.5) !important;
-  outline-offset: 4px !important;
-}
-
-.whatsapp-float__icon {
-  width: 28px !important;
-  height: 28px !important;
-  flex-shrink: 0 !important;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.whatsapp-float:hover .whatsapp-float__icon {
-  transform: rotate(15deg) scale(1.1) !important;
-}
-
-.whatsapp-float__text {
-  position: relative !important;
-  z-index: 1 !important;
-  white-space: nowrap !important;
-  display: inline-block !important;
-}
-
-.whatsapp-float__pulse {
-  display: none !important;
-}
-
-/* ================================
-   AJUSTES ESPECÍFICOS HEADER/FOOTER
-   ================================ */
-.footer__link--active {
-  color: var(--color-primary-light);
-  font-weight: var(--font-weight-semibold);
-}
-
-.footer__badge--active {
-  background: rgba(79, 158, 33, 0.15);
-  border-color: rgba(79, 158, 33, 0.3);
-  color: var(--color-primary-light);
-}
-
-.footer__badge--active svg {
-  color: var(--color-primary-light);
-}
-
-.footer__badge--active:hover {
-  background: rgba(79, 158, 33, 0.2);
-  border-color: rgba(79, 158, 33, 0.4);
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ================================
    MEDIA QUERIES
    ================================ */
 
-/* TABLET (768px+) */
+/* RESPONSIVE - TABLET */
 @media screen and (min-width: 768px) {
+  :root {
+    --header-height-mobile: 72px;
+  }
+
   .hide-mobile {
     display: inline;
   }
@@ -1060,12 +1032,6 @@ body {
     width: 32px;
     height: 32px;
   }
-
-  .whatsapp-float {
-    bottom: 32px !important;
-    right: 32px !important;
-    padding: 1.125rem 2rem !important;
-  }
 }
 
 /* MOBILE: Layout vertical para simulation link */
@@ -1102,25 +1068,6 @@ body {
   }
 }
 
-/* MOBILE PEQUENO: WhatsApp apenas ícone */
-@media screen and (max-width: 374px) {
-  .whatsapp-float {
-    padding: 1rem !important;
-    min-width: 56px !important;
-    min-height: 56px !important;
-    border-radius: 50% !important;
-  }
-  
-  .whatsapp-float__text {
-    display: none !important;
-  }
-  
-  .whatsapp-float__icon {
-    width: 32px !important;
-    height: 32px !important;
-  }
-}
-
 /* DESKTOP (1024px+) */
 @media screen and (min-width: 1024px) {
   .financing-page {
@@ -1137,7 +1084,7 @@ body {
 }
 
 /* ================================
-   ACESSIBILIDADE
+   ACESSIBILIDADE - MOTION & CONTRASTE
    ================================ */
 
 /* Reduzir movimento */
@@ -1148,16 +1095,7 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .whatsapp-float,
-  .whatsapp-float__icon {
-    animation: none !important;
-    transition: opacity 0.2s, visibility 0.2s !important;
-  }
-  
-  .whatsapp-float:hover {
-    transform: none !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -1171,5 +1109,9 @@ body {
 
   .cta-whatsapp-button {
     border: 2px solid #1ebe57;
+  }
+
+  .trust-item {
+    border: 2px solid rgba(79, 158, 33, 0.5);
   }
 }
